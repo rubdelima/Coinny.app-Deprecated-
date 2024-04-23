@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884628679060",
+    "project_id": "l-earn-8f2de",
+    "storage_bucket": "l-earn-8f2de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884628679060:android:ccae00ca33cd7eb99c0781",
+        "android_client_info": {
+          "package_name": "com.example.learn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUMFZcnIFmQIGbEAkAU7hwNXBX33MtJtg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

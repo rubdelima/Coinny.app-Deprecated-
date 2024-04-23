@@ -1,0 +1,16 @@
+io.flutter.plugins.firebase.firestore.cloud_firestore-jetified-annotation-experimental-1.1.0-0 C:\Users\rubin\.gradle\caches\transforms-3\02315cc9f75263553d2042718fc375ee\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-jetified-window-1.0.0-beta04-1 C:\Users\rubin\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-jetified-firebase-common-20.4.2-2 C:\Users\rubin\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-jetified-play-services-basement-18.1.0-3 C:\Users\rubin\.gradle\caches\transforms-3\55b4e390742817dc4b9653e42d791034\transformed\jetified-play-services-basement-18.1.0\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-jetified-play-services-base-18.0.1-4 C:\Users\rubin\.gradle\caches\transforms-3\680a2964d8a0bce7cbd43c0f88e0420c\transformed\jetified-play-services-base-18.0.1\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-jetified-window-java-1.0.0-beta04-5 C:\Users\rubin\.gradle\caches\transforms-3\99750bb863b6fe460a7b5da8686e778d\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-core-1.6.0-6 C:\Users\rubin\.gradle\caches\transforms-3\d08c73bfb05384f2e52578171dbd141e\transformed\core-1.6.0\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-main-7 C:\Users\rubin\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore-4.15.8\android\src\main\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-release-8 C:\Users\rubin\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore-4.15.8\android\src\release\res
+io.flutter.plugins.firebase.firestore.cloud_firestore-pngs-9 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\cloud_firestore\generated\res\pngs\release
+io.flutter.plugins.firebase.firestore.cloud_firestore-resValues-10 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\cloud_firestore\generated\res\resValues\release
+io.flutter.plugins.firebase.firestore.cloud_firestore-rs-11 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\cloud_firestore\generated\res\rs\release
+io.flutter.plugins.firebase.firestore.cloud_firestore-mergeReleaseResources-12 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\cloud_firestore\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.firebase.firestore.cloud_firestore-mergeReleaseResources-13 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\cloud_firestore\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.firebase.firestore.cloud_firestore-merged_res-14 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\cloud_firestore\intermediates\merged_res\release
+io.flutter.plugins.firebase.firestore.cloud_firestore-packaged_res-15 C:\Users\rubin\Desktop\Faculdade\05_Periodo\Projetao\L-earn\learn\build\firebase_core\intermediates\packaged_res\release
