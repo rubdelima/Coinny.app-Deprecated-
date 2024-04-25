@@ -11,13 +11,18 @@ class AcheivmentsDate {
   AcheivmentsDate({required this.date, required this.id});
 }
 
-class Children {
-  String childrenCode;
+class Person {
   String name;
   String photoPath;
+  DateTime? lastAccsess;
+
+  Person({required this.name, required this.photoPath, this.lastAccsess});
+}
+
+class Children extends Person {
+  String childrenCode;
   DateTime birthdate;
   int pontuation;
-  DateTime? lastAccsess;
   final List<String> goals;
   final List<List<int>> activities;
   final List<AcheivmentsDate> acheivments;
@@ -26,17 +31,17 @@ class Children {
 
   Children({
     required this.childrenCode,
-    required this.name,
     required this.birthdate,
-    this.photoPath = "assets/images/appImages/ianzinho.jpg",
     this.pontuation = 0,
     this.activities = const [],
     this.goals = const [],
     this.acheivments = const [],
-    this.lastAccsess,
     this.lastActivitie = 0,
     this.xpPerDay = const {},
-  });
+    required String name,
+    required String photoPath,
+    DateTime? lastAccsess,
+  }) : super(name: name, photoPath: photoPath, lastAccsess: lastAccsess);
 
   Map<String, dynamic> getJson() {
     return {
@@ -71,6 +76,46 @@ class Children {
         .doc(childrenCode)
         .set(getJson())
         .catchError((error) => print('Erro ao adicionar documento: $error'));
+  }
+
+  Map<String, dynamic> getValues() {
+    int selected = 0;
+    levelsPontuations.keys.forEach((value) {
+      if (value <= pontuation && value >= selected) {
+        selected = value;
+      }
+    });
+    return levelsPontuations[selected] ?? {'level' : 'Bronze', 'class' : 'I', 'nextLevelValue' : 200, 'levelValue': 0};
+  }
+
+  String getLevel(){
+    return getValues()['level'] as String;
+  }
+
+  String getClass(){
+    return getValues()['class'] as String;
+  }
+
+  
+  Stack getShield() {
+    return Stack(alignment: Alignment.center, children: [
+      Center(
+        child: Image.asset(
+          'assets/images/appIcons/badge-${getLevel().toLowerCase()}-${"blue"}.png',
+          width: 72,
+        ),
+      ),
+      Container(
+          padding: const EdgeInsets.only(bottom: 5),
+          child: Text(
+            getClass(),
+            style: const TextStyle(
+                color: Color(0xFF040862),
+                fontSize: 32,
+                fontFamily: 'Fieldwork-Geo',
+                fontWeight: FontWeight.w800),
+          ))
+    ]);
   }
 }
 
@@ -171,7 +216,9 @@ class VolatileChildren extends ValueNotifier<Children> {
         break;
       }
     }
-    if (!added) {children.activities.add([]);}
+    if (!added) {
+      children.activities.add([]);
+    }
     children.acheivments.add(AcheivmentsDate(date: today, id: 4));
     children.pontuation += 100;
     children.update();
@@ -179,16 +226,14 @@ class VolatileChildren extends ValueNotifier<Children> {
   }
 }
 
-class Parents {
-  String name;
-  String photoPath;
+class Parents extends Person {
   final List<Children> dependents;
 
   Parents({
-    required this.name,
-    this.photoPath = "assets/images/appImages/ianzinho.jpg",
+    required String name,
+    required String photoPath,
     this.dependents = const [],
-  });
+  }) : super(name: name, photoPath: photoPath);
 
   Map<String, dynamic> getJson() {
     return {
@@ -282,14 +327,4 @@ class Activitie {
     this.backgroundColors = const [Color(0XFF1290A2), Color(0xFF82DA59)],
     this.iconPath,
   });
-}
-
-String getLevel(int pontuation){
-  for (var val in levelsPontuations.entries){
-    if (pontuation >= val.key && pontuation < val.value['nextLevelValue']){
-      return "${val.value['level']} ${val.value['class']}";
-    }
-  }
-
-  return "Diamante III";
 }

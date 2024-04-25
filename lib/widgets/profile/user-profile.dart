@@ -1,60 +1,59 @@
 import 'package:flutter/material.dart';
+import "package:learn/utils/modelsClass.dart";
+import 'package:learn/widgets/profile/StreakWidget.dart';
 
 class UserPhotoAndName extends StatelessWidget {
-  final String userName;
-  final String userPhotoPath;
-  final String firstLine;
-  final FontWeight fontWeight1;
-  final String secondLine;
-  final FontWeight fontWeight2;
+  final Person person;
   final bool isSugestion;
 
-
   const UserPhotoAndName({
-    required this.userName,
-    required this.userPhotoPath,
-    required this.firstLine,
-    required this.fontWeight1,
-    required this.secondLine,
-    required this.fontWeight2,
+    required this.person,
     this.isSugestion = false,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Children? child = person is Children ? person as Children : null;
+
     return Row(
-      // Nesting Rows to keep the image and text together
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(50),
-          child: Image.asset(userPhotoPath, height: 60),
+          child: Image.asset(person.photoPath, height: 60),
         ),
-        const SizedBox(width: 8), // Adjust the space as needed
+        const SizedBox(width: 8),
         RichText(
           text: TextSpan(
             children: [
               TextSpan(
-                text: firstLine,
+                text: (isSugestion ? person.name : "Olá") + "\n",
                 style: TextStyle(
-                  color: isSugestion? const Color(0xFF0D116E): Colors.white,
-                  fontSize: isSugestion? 18:14,
-                  fontFamily: "Fieldwork-Geo",
-                  fontWeight: fontWeight1,
+                  fontSize: isSugestion ? 18 : 14,
+                  fontWeight: isSugestion ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
               TextSpan(
-                text: secondLine,
+                text: isSugestion
+                    ? "${child!.getLevel()} ${child.getClass()}"
+                    : person.name,
                 style: TextStyle(
-                  color: isSugestion? const Color(0xFF0D116E): Colors.white,
-                  fontSize: isSugestion? 14:18,
-                  fontFamily: "Fieldwork-Geo",
-                  fontWeight: fontWeight2,
+                  fontSize: isSugestion ? 14 : 18,
+                  fontWeight: isSugestion ? FontWeight.normal : FontWeight.bold,
                 ),
               ),
             ],
+            style: TextStyle(
+              color: isSugestion ? const Color(0xFF0D116E) : Colors.white,
+              fontFamily: "Fieldwork-Geo",
+            ),
           ),
         ),
+        const Spacer(),
+        if (person is Children)
+          isSugestion
+              ? child!.getShield()
+              : StreakWidget(child: person as Children)
       ],
     );
   }

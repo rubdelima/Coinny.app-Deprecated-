@@ -105,7 +105,7 @@ class ChildMonitoringBox extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 11, fontFamily: 'Fieldwork-Geo')),
                    Row(children: [
-                    LevelBox(text: getLevel(child.pontuation)),
+                    LevelBox(text: child.getLevel()),
                     LevelBox(text: "${child.activities.length} trilhas concluídas"),
                   ])
                 ],
