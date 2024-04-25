@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/global/learnAppBar.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/monitoring/childrenMonitoringGraph.dart';
 import 'package:learn/widgets/monitoring/childrenMonitoringSelector.dart';
 import 'package:provider/provider.dart';

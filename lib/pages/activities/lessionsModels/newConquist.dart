@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/global/backButton.dart';
 import 'package:learn/widgets/global/commonButton.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class ConquistPage extends StatelessWidget {
   final VolatileChildren children;

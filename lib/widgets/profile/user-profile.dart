@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import "package:learn/utils/modelsClass.dart";
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/profile/StreakWidget.dart';
 
 class UserPhotoAndName extends StatelessWidget {
@@ -9,8 +9,8 @@ class UserPhotoAndName extends StatelessWidget {
   const UserPhotoAndName({
     required this.person,
     this.isSugestion = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class UserPhotoAndName extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: (isSugestion ? person.name : "Olá") + "\n",
+                text: "${isSugestion ? person.name : "Olá"}\n",
                 style: TextStyle(
                   fontSize: isSugestion ? 18 : 14,
                   fontWeight: isSugestion ? FontWeight.bold : FontWeight.normal,

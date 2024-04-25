@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/homePage.dart';
-import 'widgets/global/navBar.dart';
-import 'pages/parents/profilePage.dart';
-import 'pages/parents/monitoringPage.dart';
-import 'package:learn/utils/modelsClass.dart';
+import '../widgets/global/navBar.dart';
+import '../pages/parents/profilePage.dart';
+import '../pages/parents/monitoringPage.dart';
+import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
 
 class ParentsMain extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class LessionCardStatic extends StatelessWidget {
   final Lession lession;

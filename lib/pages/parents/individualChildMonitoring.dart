@@ -3,7 +3,7 @@ import 'package:learn/widgets/global/learnAppBar.dart';
 import 'package:learn/widgets/conquists/achivievementWidget.dart';
 import 'package:learn/widgets/global/globalProgressWidget.dart';
 import 'package:learn/utils/activitiesList.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/activities/lessionCard.dart';
 
 class ChildMonitoringSpecific extends StatelessWidget {

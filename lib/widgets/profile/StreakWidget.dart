@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
+import 'package:learn/utils.dart';
 
 class StreakWidget extends StatelessWidget {
   final Children child;

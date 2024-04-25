@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/activities/lession01Main.dart';
-import './modelsClass.dart';
+import 'package:learn/classes.dart';
 
 
 List<Activitie> activitiesList = [

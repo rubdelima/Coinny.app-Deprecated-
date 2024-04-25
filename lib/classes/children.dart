@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:learn/classes/person.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:learn/utils/levelBarUtils.dart';
+import 'package:flutter/material.dart';
 
 final DateTime now = DateTime.now();
 final today = DateTime(now.year, now.month, now.day);
@@ -9,14 +10,6 @@ class AcheivmentsDate {
   DateTime date;
   int id;
   AcheivmentsDate({required this.date, required this.id});
-}
-
-class Person {
-  String name;
-  String photoPath;
-  DateTime? lastAccsess;
-
-  Person({required this.name, required this.photoPath, this.lastAccsess});
 }
 
 class Children extends Person {
@@ -224,107 +217,4 @@ class VolatileChildren extends ValueNotifier<Children> {
     children.update();
     notifyListeners();
   }
-}
-
-class Parents extends Person {
-  final List<Children> dependents;
-
-  Parents({
-    required String name,
-    required String photoPath,
-    this.dependents = const [],
-  }) : super(name: name, photoPath: photoPath);
-
-  Map<String, dynamic> getJson() {
-    return {
-      'name': name,
-      'photoPath': photoPath,
-      'dependents': dependents.map((e) => e.childrenCode).toList(),
-    };
-  }
-}
-
-class VolatileParents extends ValueNotifier<Parents> {
-  Parents parents;
-  VolatileParents({required this.parents}) : super(parents);
-
-  void setParents(Parents parents) {
-    this.parents = parents;
-    notifyListeners();
-  }
-
-  void addDependent(Children children) {
-    parents.dependents.add(children);
-    notifyListeners();
-  }
-}
-
-Future<Parents> loadParent(String email) async {
-  DocumentSnapshot parentData =
-      await FirebaseFirestore.instance.collection('parent').doc(email).get();
-
-  if (parentData.exists) {
-    String name = parentData.get("name");
-    String photoPath = parentData.get("photoPath");
-    List<dynamic> getList = parentData.get("dependents");
-    List<String> dependents = getList.map((item) => item.toString()).toList();
-    List<Future<Children>> futureChildrenList =
-        dependents.map((e) => loadChildren(e)).toList();
-    List<Children> childrenList = await Future.wait(futureChildrenList);
-    return Parents(name: name, photoPath: photoPath, dependents: childrenList);
-  }
-  throw Exception();
-}
-
-int diffYears(DateTime birthDate) {
-  DateTime now = DateTime.now();
-  int years = now.year - birthDate.year;
-  if (now.month < birthDate.month ||
-      (now.month == birthDate.month && now.day < birthDate.day)) {
-    years--;
-  }
-  return years;
-}
-
-int diffDays(DateTime date) {
-  DateTime now = DateTime.now();
-  return now.difference(date).inDays;
-}
-
-class Lession {
-  final int id;
-  final String title;
-  final String description;
-  Type? page;
-
-  Lession({
-    required this.id,
-    required this.title,
-    required this.description,
-    this.page,
-  });
-}
-
-class Activitie {
-  final int id;
-  final String title;
-  final String description;
-  final String pageTitle;
-  final String pageDescription;
-  final int level;
-  final List<Color> backgroundColors;
-  final List<Lession> lessionsList;
-  final String? iconPath;
-
-  Activitie({
-    required this.id,
-    required this.title,
-    required this.description,
-    this.pageTitle = "",
-    this.pageDescription = "",
-    this.lessionsList = const [],
-    this.level = 1,
-    this.backgroundColors = const [Color(0XFF1290A2), Color(0xFF82DA59)],
-    this.iconPath,
-  });
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn/widgets/global/backButton.dart';
 import 'package:learn/widgets/global/commonButton.dart';
 import 'package:learn/widgets/lessions/lessionProgressBar.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class FinalPage extends StatelessWidget {
   final PageController pageController;

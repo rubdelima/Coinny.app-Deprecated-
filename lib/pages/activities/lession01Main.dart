@@ -3,7 +3,7 @@ import 'package:learn/pages/activities/lessionsModels/questionPage.dart';
 import 'package:learn/pages/activities/lessionsModels/mascotPage.dart';
 import 'package:learn/pages/activities/lessionsModels/completedActivityPage.dart';
 import 'package:learn/pages/activities/lessionsModels/newConquist.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'pageTexts.dart';
 
 

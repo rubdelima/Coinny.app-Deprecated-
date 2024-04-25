@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learn/backend/firebase_options.dart';
 import 'pages/loginPage.dart';
-import 'parentsMain.dart';
-import 'childrenMain.dart';
+import 'source/parents.dart';
+import 'source/children.dart';
 import 'pages/parents/signUp.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

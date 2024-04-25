@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/global/learnAppBar.dart';
 import '../../widgets/settings/selectedGoals.dart';
 import '../../widgets/settings/childrenDataBox.dart';

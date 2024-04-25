@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn/utils/levelBarUtils.dart';
 import '../../widgets/global/learnAppBar.dart';
 import 'package:learn/widgets/profile/user-profile.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class ActivitiesSugestionPage extends StatelessWidget {
   final Children children;

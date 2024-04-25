@@ -3,7 +3,7 @@ import 'package:learn/utils/activitiesList.dart';
 import 'package:learn/widgets/activities/activitieCardStatic.dart';
 import 'package:learn/widgets/global/learnAppBar.dart';
 import 'package:learn/widgets/activities/activitieContentColumn.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/pages/activities/lession01Main.dart';
 
 class ActivitieMain extends StatelessWidget {

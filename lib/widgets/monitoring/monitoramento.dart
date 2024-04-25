@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/individualChildMonitoring.dart';
-import 'package:learn/utils/modelsClass.dart';
-
+import 'package:learn/classes.dart';
+import 'package:learn/utils.dart';
 class MonitoringWidget extends StatelessWidget {
   final Parents parent;
   final String title;
