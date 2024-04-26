@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/sugestionPage.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
-import 'package:learn/widgets/global/globalProgressWidget.dart';
+import 'package:learn/widgets/global/app_bar.dart';
+import 'package:learn/components/user_profile.dart';
+import 'package:learn/widgets/global/progress.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/widgets/notifications/showSugestion.dart';
 import 'package:learn/widgets/monitoring/monitoramento.dart';
@@ -20,8 +20,7 @@ class ParentsHPage extends StatelessWidget {
     VolatileParents parent = Provider.of<VolatileParents>(context);
 
     return Scaffold(
-        appBar: LearnAppBarSuper(
-          superHeigth: 320,
+        appBar: LearnAppBar(
           superWidget: GlobalProgress(
             pontuation: 100,
             isMascot: false,

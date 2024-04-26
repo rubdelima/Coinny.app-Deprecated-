@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/utils/levelBarUtils.dart';
-import '../../widgets/global/learnAppBar.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
+import '../../widgets/global/app_bar.dart';
+import 'package:learn/components/user_profile.dart';
 import 'package:learn/classes.dart';
 
 class ActivitiesSugestionPage extends StatelessWidget {
@@ -17,9 +17,7 @@ class ActivitiesSugestionPage extends StatelessWidget {
     final childrenLevel = getValues();
 
     return Scaffold(
-      appBar: LearnAppBarSuper(
-        superHeigth: 320 - 24,
-        globalHeigth: 268 - 24,
+      appBar: LearnAppBar(
         superWidget: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(

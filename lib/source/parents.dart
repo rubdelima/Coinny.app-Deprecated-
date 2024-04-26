@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/homePage.dart';
-import '../widgets/global/navBar.dart';
+import 'package:learn/widgets.dart';
 import '../pages/parents/profilePage.dart';
 import '../pages/parents/monitoringPage.dart';
 import 'package:learn/classes.dart';
@@ -70,11 +70,6 @@ class _ParentsMainState extends State<ParentsMain> {
         PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
-          onPageChanged: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
           children: _pageOptions,
         ),
         Positioned(
@@ -82,7 +77,6 @@ class _ParentsMainState extends State<ParentsMain> {
             right: 32,
             bottom: 32,
             child: LearnNavBar(
-              selectedIndex: _selectedIndex,
               onItemTapped: _onItemTapped,
               navItems: navItems,
             ))

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/activities/activitieCardAnimated.dart';
 import 'package:learn/widgets/activities/activitieCardStatic.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
+import 'package:learn/widgets/global/app_bar.dart';
 import 'package:learn/widgets/conquists/achivievementWidget.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
+import 'package:learn/components/user_profile.dart';
 import 'package:learn/widgets/global/globalProgressWidget.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/utils/activitiesList.dart';
@@ -21,8 +21,7 @@ class ChildrenHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     VolatileChildren child = Provider.of<VolatileChildren>(context);
     return Scaffold(
-      appBar: LearnAppBarSuper(
-        superHeigth: 320,
+      appBar: LearnAppBar(
         superWidget: GlobalProgress(
           pontuation: child.value.pontuation,
           isMascot: false,
@@ -30,7 +29,7 @@ class ChildrenHomePage extends StatelessWidget {
         pageIndex: 1,
         pagePosition: pagePosition.value,
         child: Container(
-            padding: const EdgeInsets.fromLTRB(14, 54, 14, 0),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
             child: UserPhotoAndName(person: child.value)
                 ),
       ),

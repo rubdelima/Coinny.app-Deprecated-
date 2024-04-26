@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/backButton.dart';
-import 'package:learn/widgets/global/commonButton.dart';
-import 'package:learn/widgets/lessions/lessionProgressBar.dart';
+import 'package:learn/components/back_button.dart';
+import 'package:learn/components/learn_button.dart';
+import 'package:learn/widgets/lessions/lession_progress_bar.dart';
 import 'package:learn/classes.dart';
 
 class FinalPage extends StatelessWidget {

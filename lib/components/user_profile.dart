@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/widgets/profile/StreakWidget.dart';
+import 'package:learn/components/streak.dart';
 
 class UserPhotoAndName extends StatelessWidget {
   final Person person;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learn/pages/activities/lessionsModels/questionPage.dart';
-import 'package:learn/pages/activities/lessionsModels/mascotPage.dart';
-import 'package:learn/pages/activities/lessionsModels/completedActivityPage.dart';
-import 'package:learn/pages/activities/lessionsModels/newConquist.dart';
+import 'package:learn/docs/activities/lessionsModels/questionPage.dart';
+import 'package:learn/docs/activities/lessionsModels/mascotPage.dart';
+import 'package:learn/docs/activities/lessionsModels/completedActivityPage.dart';
+import 'package:learn/docs/activities/lessionsModels/newConquist.dart';
 import 'package:learn/classes.dart';
 import 'pageTexts.dart';
 

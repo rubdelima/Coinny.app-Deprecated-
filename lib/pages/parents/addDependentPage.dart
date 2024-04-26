@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
+import 'package:learn/widgets/global/app_bar.dart';
 import '../../widgets/settings/selectedGoals.dart';
 import '../../widgets/settings/childrenDataBox.dart';
 import 'package:learn/widgets/login/loginEnterButton.dart';
@@ -95,7 +95,6 @@ class _AddDependentPageState extends State<AddDependentPage> {
 
     return Scaffold(
       appBar: LearnAppBar(
-        heigth: 180,
         backButtonFunction: () {
           Navigator.pop(context);
         },

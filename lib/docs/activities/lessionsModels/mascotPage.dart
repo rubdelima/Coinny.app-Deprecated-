@@ -1,13 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/backButton.dart';
-import 'package:learn/widgets/global/commonButton.dart';
-import 'package:learn/classes.dart';
+import 'package:learn/components/back_button.dart';
+import 'package:learn/components/learn_button.dart';
 
-class ConquistPage extends StatelessWidget {
-  final VolatileChildren children;
+class MascotPage extends StatelessWidget {
+  final PageController pageController;
+  final String nextText;
+  final bool isHappy;
+  final RichText text;
 
-  ConquistPage({required this.children});
+  MascotPage(
+      {required this.pageController,
+      required this.text,
+      this.isHappy = true,
+      this.nextText = "Continuar"});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class ConquistPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 80,
+              height: 64,
             ),
             LearnBackButton(
               buttonColor: const Color(0xFFFFFFFF),
@@ -45,34 +50,15 @@ class ConquistPage extends StatelessWidget {
             SizedBox(
                 height: MediaQuery.sizeOf(context).height - 360,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Flexible(child: text),
                     Center(
                       child: Image.asset(
-                        "assets/images/conquistas/new-conquist.png",
+                        "assets/images/mascote/mascot-${isHappy ? 'happy' : 'sad'}.png",
                         height: 240,
                       ),
                     ),
-                    const SizedBox(height: 40,),
-                    Flexible(
-                        child: RichText(
-                      text: const TextSpan(
-                          children: [
-                            TextSpan(
-                                text: "Nova Conquista desbloqueada!\n\n",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20)),
-                            TextSpan(
-                                text:
-                                    "Vá na página de conquistas para acompanhar seus reconhecimentos!")
-                          ],
-                          style: TextStyle(
-                            color: Color(0xFFFFFFFF),
-                            fontSize: 16,
-                            fontFamily: "Fieldwork-Geo",
-                            fontWeight: FontWeight.w400,
-                          )),
-                      textAlign: TextAlign.center,
-                    )),
                   ],
                 )),
           ],
@@ -81,9 +67,9 @@ class ConquistPage extends StatelessWidget {
       Positioned(
           bottom: 120,
           child: LearnButton(
-            text: const Text(
-              "Finalizar",
-              style: TextStyle(
+            text: Text(
+              nextText,
+              style: const TextStyle(
                 color: Color(0xff101573),
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -92,8 +78,9 @@ class ConquistPage extends StatelessWidget {
             ),
             buttonColor: const Color(0xFFFFFFFF),
             onPressed: () {
-              children.addActivity();
-              Navigator.pop(context);
+              pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease);
             },
           ))
     ]));

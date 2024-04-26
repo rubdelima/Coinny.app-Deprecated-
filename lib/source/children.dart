@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/global/navBar.dart';
+import '../widgets/global/nav_bar.dart';
 import '../pages/children/homePage.dart';
 import '../pages/children/activitiesPage.dart';
 import '../pages/children/MascotPage.dart';
@@ -77,7 +77,7 @@ class _ChildrenMainState extends State<ChildrenMain> {
                   right: 32,
                   bottom: 32,
                   child: LearnNavBar(
-                    selectedIndex: _selectedIndex,
+                    //selectedIndex: _selectedIndex,
                     onItemTapped: _onItemTapped,
                     navItems: navItems,
                   ))

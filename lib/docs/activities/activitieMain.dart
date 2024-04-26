@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:learn/utils/activitiesList.dart';
 import 'package:learn/widgets/activities/activitieCardStatic.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
+import 'package:learn/widgets/global/app_bar.dart';
 import 'package:learn/widgets/activities/activitieContentColumn.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/pages/activities/lession01Main.dart';
+import 'package:learn/docs/activities/lession01Main.dart';
 
 class ActivitieMain extends StatelessWidget {
   final ActivitieCardStatic content;
@@ -16,9 +16,7 @@ class ActivitieMain extends StatelessWidget {
   Widget build(BuildContext context) {
     final int activitieId = content.activitie.id;
     return Scaffold(
-        appBar: LearnAppBarSuper(
-          superHeigth: 280,
-          globalHeigth: 280,
+        appBar: LearnAppBar(
           superWidget: ActivitieCardStatic(
             activitie: content.activitie,
             isLocked: content.isLocked,

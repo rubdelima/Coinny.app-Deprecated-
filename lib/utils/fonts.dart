@@ -7,8 +7,7 @@ class CoinnyText extends StatelessWidget{
   final String fontFamily;
   final FontWeight fontWeight;
 
-  CoinnyText({
-    this.text = "", 
+  CoinnyText(String this.text, {
     this.color = const Color(0xFFFFFFFF),
     this.fontSize  = 12, 
     this.fontFamily  = "Fieldwork-Geo",

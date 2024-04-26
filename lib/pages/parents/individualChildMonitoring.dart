@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
+import 'package:learn/widgets/global/app_bar.dart';
 import 'package:learn/widgets/conquists/achivievementWidget.dart';
 import 'package:learn/widgets/global/globalProgressWidget.dart';
 import 'package:learn/utils/activitiesList.dart';
@@ -17,9 +17,7 @@ class ChildMonitoringSpecific extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: LearnAppBarSuper(
-        superHeigth: 300,
-        globalHeigth: 280,
+      appBar: LearnAppBar(
         superWidget: Column(
           children: [
             GlobalProgress(
@@ -135,8 +133,6 @@ class ChildMonitoringSpecific extends StatelessWidget {
               );
             }).toList(),
           ),
-
-
        ]),
       ),
     );

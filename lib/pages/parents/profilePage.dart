@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
-import '/widgets/global/learnAppBar.dart';
+import 'package:learn/components/user_profile.dart';
+import '../../widgets/global/app_bar.dart';
 import 'package:learn/widgets/monitoring/monitoramento.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/pages/parents/addDependentPage.dart';
@@ -17,7 +17,6 @@ class ProfilePage extends StatelessWidget {
     VolatileParents parent = Provider.of<VolatileParents>(context);
     return Scaffold(
       appBar: LearnAppBar(
-          heigth: 248,
           pageIndex: 2,
           pagePosition: pagePosition.value,
           backButtonFunction: () {
