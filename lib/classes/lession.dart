@@ -1,39 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:learn/classes.dart';
+import 'package:learn/docs/activities/lession01Main.dart';
+import 'package:learn/utils.dart';
 
-class Lession {
+final defaultLessonMain = Lession01Main();
+
+@immutable
+class Lesson {
   final int id;
   final String title;
   final String description;
-  Type? page;
+  final String pageRouter;
 
-  Lession({
+  const Lesson({
     required this.id,
     required this.title,
     required this.description,
-    this.page,
+    this.pageRouter = "/lession01",
   });
+
+  factory Lesson.fromId(int number){
+    return lessionsList[number] ?? constLession;
+  }
+
+  void launchLession(BuildContext context, VolatileChildren children){
+  Navigator.pushReplacementNamed(
+    context, pageRouter,
+    arguments: children
+  );
+}
 }
 
+@immutable
 class Activitie {
   final int id;
   final String title;
   final String description;
-  final String pageTitle;
-  final String pageDescription;
-  final int level;
   final List<Color> backgroundColors;
-  final List<Lession> lessionsList;
+  final List<int> lessions;
   final String? iconPath;
 
-  Activitie({
+  const Activitie({
     required this.id,
     required this.title,
     required this.description,
-    this.pageTitle = "",
-    this.pageDescription = "",
-    this.lessionsList = const [],
-    this.level = 1,
+    this.lessions = const [],
     this.backgroundColors = const [Color(0XFF1290A2), Color(0xFF82DA59)],
     this.iconPath,
   });
+
+  Lesson? getLesson(int index){
+    return lessionsList[index];
+  }
 }

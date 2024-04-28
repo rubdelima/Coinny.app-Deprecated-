@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/app_bar.dart';
+import 'package:learn/widgets.dart';
 import 'package:learn/widgets/conquists/achivievementWidget.dart';
-import 'package:learn/widgets/global/globalProgressWidget.dart';
 import 'package:learn/utils/activitiesList.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/widgets/activities/lessionCard.dart';
@@ -51,50 +50,52 @@ class ChildMonitoringSpecific extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            AchievementsWidget(
-              childAcheivments: children.acheivments,
-              withText: false,
-           ),
-           const SizedBox(height: 16),
-            RichText(
-              text: const TextSpan(
-                children: [
-                  
-                  TextSpan(
-                    text: 'Conceitos aprendidos\n',
+          AchievementsWidget(
+            childAcheivments: children.acheivments,
+            withText: false,
+          ),
+          const SizedBox(height: 16),
+          RichText(
+            text: const TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Conceitos aprendidos\n',
+                  style: TextStyle(
+                      color: Color(0xFF222222),
+                      fontFamily: "Fieldwork-Geo",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800),
+                ),
+                WidgetSpan(child: SizedBox(height: 18)),
+                TextSpan(
+                    text:
+                        'Essas foram as atividades que a criança já concluiu e os conceitos aprendidos!',
                     style: TextStyle(
-                        color: Color(0xFF222222),
+                        color: Color(0xFF5C5C5C),
                         fontFamily: "Fieldwork-Geo",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w800),
-                  ),
-                  WidgetSpan(child: SizedBox(height: 18)),
-                  TextSpan(
-                      text: 'Essas foram as atividades que a criança já concluiu e os conceitos aprendidos!',
-                      style: TextStyle(
-                          color: Color(0xFF5C5C5C),
-                          fontFamily: "Fieldwork-Geo",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300))
-                ],
-              ),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300))
+              ],
             ),
-            const SizedBox(height: 16),
-            Column(
+          ),
+          const SizedBox(height: 16),
+          Column(
             children: activitiesList[children.lastActivitie]
-                .lessionsList
+                .lessions
                 .where((e) =>
-                    children.activities[children.lastActivitie].length >
-                    e.id) 
+                    children.activities[children.lastActivitie].length > e)
                 .map((e) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: LessionCardStatic(
-                    lession: e, isFinished: true, isLocked: false, callback: (){},),
+                  lession: Lesson.fromId(e),
+                  isFinished: true,
+                  isLocked: false,
+                  children: VolatileChildren(children: children),
+                ),
               );
             }).toList(),
           ),
-
           const SizedBox(height: 16),
           RichText(
             text: const TextSpan(
@@ -121,19 +122,22 @@ class ChildMonitoringSpecific extends StatelessWidget {
           ),
           Column(
             children: activitiesList[children.lastActivitie]
-                .lessionsList
+                .lessions
                 .where((e) =>
-                    children.activities[children.lastActivitie].length <
-                    e.id) 
+                    children.activities[children.lastActivitie].length < e)
                 .map((e) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: LessionCardStatic(
-                    lession: e, isFinished: false, isLocked: true, callback: (){},),
+                  lession: Lesson.fromId(e),
+                  isFinished: true,
+                  isLocked: false,
+                  children: VolatileChildren(children: children),
+                ),
               );
             }).toList(),
           ),
-       ]),
+        ]),
       ),
     );
   }

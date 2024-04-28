@@ -45,10 +45,10 @@ class ParentsHPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ActivitiesSugestionPage(
-                                  children: parent.value.dependents[0])));
+                                  children: parent.value.dependents["1111"]!)));
                     },
                     width: MediaQuery.sizeOf(context).width - 32,
-                    childName: parent.value.dependents[0].name,
+                    childName: parent.value.dependents["1111"]!.name,
                     activitieName: "Orçamento de um passeio no Shopping"),
                 const SizedBox(
                   height: 32,

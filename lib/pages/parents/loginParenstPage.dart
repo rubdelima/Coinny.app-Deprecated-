@@ -147,10 +147,11 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                             print('the error is $e');
                           }
                           rethrow;
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        } on Exception catch (e) {
+                          String error = e.toString();
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
-                                  'As credenciais informadas não são válidas, tente novamente')));
+                                  'As credenciais informadas não são válidas, tente novamente $error')));
                         }
                       },
                       title: "Entrar",

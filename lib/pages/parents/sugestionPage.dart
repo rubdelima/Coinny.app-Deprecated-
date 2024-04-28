@@ -14,8 +14,6 @@ class ActivitiesSugestionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final childrenLevel = getValues();
-
     return Scaffold(
       appBar: LearnAppBar(
         superWidget: Container(

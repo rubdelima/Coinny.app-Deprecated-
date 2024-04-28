@@ -4,7 +4,6 @@ import 'package:learn/widgets/activities/activitieCardStatic.dart';
 import 'package:learn/widgets/global/app_bar.dart';
 import 'package:learn/widgets/activities/activitieContentColumn.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/docs/activities/lession01Main.dart';
 
 class ActivitieMain extends StatelessWidget {
   final ActivitieCardStatic content;
@@ -21,10 +20,10 @@ class ActivitieMain extends StatelessWidget {
             activitie: content.activitie,
             isLocked: content.isLocked,
             withProgress: true,
-            progress: getProgress(activitieId, child.value.activities[activitieId]),
+            progress:
+                getProgress(activitieId, child.value.activities[activitieId]),
           ),
           child: Container(
-              //width: MediaQuery.sizeOf(context).width,
               padding: EdgeInsets.fromLTRB(
                   (MediaQuery.sizeOf(context).width / 2) - 48, 40, 16, 0),
               child: const Text(
@@ -46,14 +45,11 @@ class ActivitieMain extends StatelessWidget {
                 child: ActivitieContentColumn(
               title: "Conteúdo das atividades",
               description: "Selecione a atividade",
-              lessions: content.activitie.lessionsList,
-              finishedLessions: child.value.activities[content.activitie.id].length,
-              callback: () {
-                Navigator.push(
-              context,
-              MaterialPageRoute(
-                 builder: (context) => Lession01Main(children: child,)));
-              },
+              lessions: content.activitie.lessions
+                  .map((e) => Lesson.fromId(e))
+                  .toList(),
+              activitieId: content.activitie.id,
+              children:  child,
             ))));
   }
 }

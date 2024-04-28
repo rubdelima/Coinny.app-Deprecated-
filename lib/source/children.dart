@@ -77,7 +77,6 @@ class _ChildrenMainState extends State<ChildrenMain> {
                   right: 32,
                   bottom: 32,
                   child: LearnNavBar(
-                    //selectedIndex: _selectedIndex,
                     onItemTapped: _onItemTapped,
                     navItems: navItems,
                   ))

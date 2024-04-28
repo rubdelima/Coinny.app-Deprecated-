@@ -72,7 +72,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
                 onTap: () => _onChildTap(null),
                 child: null,
               ),
-              ...parent.value.dependents
+              ...parent.value.dependents.values.toList()
                   .map((child) => ChildSelect(
                         isSelected: selectedChild == child,
                         onTap: () => _onChildTap(child),
@@ -99,7 +99,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
               )]
             ) ,
             child:ChildrenMonitoringGraph(
-            children: parent.value.dependents,
+            children: parent.value.dependents.values.toList(),
             selectedChild: selectedChild,
           ),
           ),
