@@ -54,8 +54,8 @@ Children carlos = Children(
       today.subtract(const Duration(days: 0)): 80,
     });
 
-
 Parents joana = Parents(
+    //email: "teste@gmail.com",
     name: "Joana Dias",
     dependents: [luciano, carlos],
     photoPath: "assets/images/appImages/joana-dias.png");

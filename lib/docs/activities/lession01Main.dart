@@ -22,10 +22,6 @@ double stringRealToDouble(String input) {
 }
 
 class Lession01Main extends StatefulWidget {
-  final VolatileChildren children;
-
-  Lession01Main({Key? key, required this.children}) : super(key: key);
-
   @override
   _Lession01MainState createState() => _Lession01MainState();
 }
@@ -64,6 +60,7 @@ class _Lession01MainState extends State<Lession01Main> {
 
   @override
   Widget build(BuildContext context) {
+    VolatileChildren child = ModalRoute.of(context)?.settings.arguments as VolatileChildren;
     List<Widget> _pageOptions = [
       MascotPage(
         pageController: _pageController,
@@ -74,7 +71,7 @@ class _Lession01MainState extends State<Lession01Main> {
                   text: "Oi ",
                 ),
                 TextSpan(
-                  text: widget.children.value.name,
+                  text: child.value.name,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const TextSpan(text: "! Sua mascote, a "),
@@ -114,7 +111,7 @@ class _Lession01MainState extends State<Lession01Main> {
                 children: [
                   TextSpan(
                       text:
-                          "Ótima ideia ${widget.children.value.name}, Connie fez a pesquisa dos ingressos primeiro e e encontrou isso aqui:"),
+                          "Ótima ideia ${child.value.name}, Connie fez a pesquisa dos ingressos primeiro e e encontrou isso aqui:"),
                 ],
                 style: const TextStyle(
                     color: Color(0xFFFFFFFF),
@@ -193,7 +190,7 @@ class _Lession01MainState extends State<Lession01Main> {
           text: RichText(
             text: TextSpan(
                 children: [
-                  TextSpan(text: "Excelente, ${widget.children.value.name}!"),
+                  TextSpan(text: "Excelente, ${child.value.name}!"),
                 ],
                 style: const TextStyle(
                     color: Color(0xFFFFFFFF),
@@ -225,7 +222,7 @@ class _Lession01MainState extends State<Lession01Main> {
             children: [
               TextSpan(
                 text:
-                    "Boa, ${widget.children.value.name}! Agora, vamos só conferir quanto a Connie deveria levar para o passeio, no total? Aqui a lista dela:\n\n",
+                    "Boa, ${child.value.name}! Agora, vamos só conferir quanto a Connie deveria levar para o passeio, no total? Aqui a lista dela:\n\n",
               ),
               TextSpan(
                 text: "Ingresso - R\$${escolhas['ingresso']}\n",
@@ -276,11 +273,11 @@ class _Lession01MainState extends State<Lession01Main> {
       ),
 
       FinalPage(pageController: _pageController,
-      children: widget.children,
+      children: child,
       percentage: _correctQuestions(),
       ),
 
-      ConquistPage(children: widget.children)
+      ConquistPage(children: child)
 
     ];
 

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learn/backend/firebase_options.dart';
+import 'package:learn/docs/activities/lession01Main.dart';
 import 'pages/loginPage.dart';
 import 'source/parents.dart';
 import 'source/children.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
             '/parentsMain': (context) => ParentsMain(),
             '/childrenMain': (context) => ChildrenMain(),
             '/signUpParents': (context) => SignParentsPage(),
+            '/lession01' :(context) => Lession01Main()
           },
         );
   }
