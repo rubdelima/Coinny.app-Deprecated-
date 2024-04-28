@@ -50,7 +50,7 @@ class MonitoringWidget extends StatelessWidget {
         ),
         const SizedBox(height: 16,),
         Column(
-          children: parent.dependents
+          children: parent.dependents.values
               .map((child) => ChildMonitoringBox(
                     child: child,
                   ))

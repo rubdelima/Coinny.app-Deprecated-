@@ -8,13 +8,13 @@ import '../../widgets/settings/selectedGoals.dart';
 import '../../widgets/settings/childrenDataBox.dart';
 import 'package:learn/widgets/login/loginEnterButton.dart';
 import 'package:learn/pages/parents/verificationCodePage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 
 class AddDependentPage extends StatefulWidget {
+  final VolatileParents parent;
   final Children? children;
 
   AddDependentPage({
+    required this.parent,
     this.children,
   });
 
@@ -46,53 +46,57 @@ class _AddDependentPageState extends State<AddDependentPage> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    void _saveDependent() async {
-      String nome = _nomeCriancaController.text;
-      String aniversario = _dataNascimentoController.text;
-      String responsavel =
-          FirebaseAuth.instance.currentUser?.email ?? "No email";
-
-      List<Map<String, dynamic>> metas = _conteudosSelecionados
-          .map((goal) => {
-                'nome': goal,
-                'createdAt': Timestamp.now(),
-              })
-          .toList();
-
-      var rng = Random();
+  Future<String> getNewChildrenCode() async {
+    final rng = Random();
+    DocumentSnapshot childData;
+    String childrenCodeString = "";
+    do {
       List<int> childrenCode = List<int>.generate(4, (_) => rng.nextInt(10));
+      childrenCodeString =
+          childrenCode.map((e) => e.toString()).toList().join();
+      childData = await FirebaseFirestore.instance
+          .collection('children')
+          .doc(childrenCodeString)
+          .get();
+      print(childrenCode);
+    } while (childData.exists);
+    return childrenCodeString;
+  }
 
-      Map<String, dynamic> novoDependente = {
-        'name': nome,
-        'birthdate': aniversario,
-        'responsavel': responsavel,
-        'metas': metas,
-        'childrenCode': childrenCode,
-        'acheivments' : [],
-        'activities' : const ["", ""],
-        'xpPerDay' : []
-      };
-
-      try {
-        await FirebaseFirestore.instance
-            .collection('dependentes')
-            .add(novoDependente)
-            .then((value) => print(value));
-      } catch (e) {
-        print(e);
+  Future<void> _saveDependent() async {
+    try {
+      if (_nomeCriancaController.text.isEmpty) {
+        throw ("O nome da criança não pode ser vazio");
       }
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => VerificationCodePage(
-                    childrenName: nome,
-                    childrenCode: childrenCode,
-                  )));
+      if (_dataNascimentoController.text.isEmpty) {
+        throw ("A data de aniversário da crinça não pode ser vazia");
+      }
+    } on Exception catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+      return;
     }
 
+    String childrenCodeString = await getNewChildrenCode();
+
+    widget.parent.saveDependent(
+        name: _nomeCriancaController.text,
+        birthdate:
+            DateFormat('dd/MM/yyyy').parse(_dataNascimentoController.text),
+        goals: _conteudosSelecionados,
+        childrenCode: childrenCodeString);
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => VerificationCodePage(
+                  childrenName: _nomeCriancaController.text,
+                  childrenCode: childrenCodeString.split("").map((e) => int.parse(e)).toList(),
+                )));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: LearnAppBar(
         backButtonFunction: () {
@@ -147,7 +151,6 @@ class _AddDependentPageState extends State<AddDependentPage> {
       ),
     );
   }
-
 
   @override
   void dispose() {

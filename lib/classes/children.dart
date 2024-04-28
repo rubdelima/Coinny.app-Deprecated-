@@ -16,7 +16,7 @@ class Children extends Person {
   String childrenCode;
   DateTime birthdate;
   int pontuation;
-  final List<String> goals;
+  List<String> goals;
   final List<List<int>> activities;
   final List<AcheivmentsDate> acheivments;
   int lastActivitie;
@@ -63,6 +63,39 @@ class Children extends Person {
     };
   }
 
+  factory Children.newChildren(String code) {
+    return Children(
+      childrenCode: code,
+      name: '',
+      photoPath: '',
+      birthdate: DateTime.now(),
+      lastAccsess: DateTime.now(),
+      acheivments: [
+        AcheivmentsDate(date: DateTime(2024, 01, 12), id: 1),
+        AcheivmentsDate(date: DateTime(2024, 01, 12), id: 2),
+        AcheivmentsDate(date: DateTime(2024, 01, 12), id: 3)
+      ],
+      activities: [
+        [0, 1],
+        [],
+      ],
+    );
+  }
+
+  void saveEdit({
+    required String name,
+    required DateTime birthdate,
+    required String childrenCode,
+    required List<String> goals,
+    String photoPath = "assets/images/mascote/mascot-happy.png",
+  }) {
+    this.name = name;
+    this.birthdate = birthdate;
+    this.childrenCode = childrenCode;
+    this.goals = goals;
+    this.photoPath = photoPath;
+  }
+
   Future<void> update() async {
     await FirebaseFirestore.instance
         .collection('children')
@@ -78,18 +111,23 @@ class Children extends Person {
         selected = value;
       }
     });
-    return levelsPontuations[selected] ?? {'level' : 'Bronze', 'class' : 'I', 'nextLevelValue' : 200, 'levelValue': 0};
+    return levelsPontuations[selected] ??
+        {
+          'level': 'Bronze',
+          'class': 'I',
+          'nextLevelValue': 200,
+          'levelValue': 0
+        };
   }
 
-  String getLevel(){
+  String getLevel() {
     return getValues()['level'] as String;
   }
 
-  String getClass(){
+  String getClass() {
     return getValues()['class'] as String;
   }
 
-  
   Stack getShield() {
     return Stack(alignment: Alignment.center, children: [
       Center(

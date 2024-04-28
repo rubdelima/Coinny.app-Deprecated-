@@ -87,7 +87,7 @@ class ProfilePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddDependentPage()));
+                              builder: (context) => AddDependentPage(parent : parent)));
                     },
                     child: Container(
                         padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
@@ -128,7 +128,7 @@ class ProfilePage extends StatelessWidget {
               height: 16,
             ),
             Column(
-              children: parent.value.dependents
+              children: parent.value.dependents.values.toList()
                   .map((child) => ChildMonitoringBox(
                         child: child,
                       ))
