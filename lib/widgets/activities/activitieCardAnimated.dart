@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/activities/activitieCardStatic.dart';
-import 'package:learn/pages/activities/activitieMain.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/docs/activities/activitieMain.dart';
+import 'package:learn/classes.dart';
 
 class ActivitieCard extends StatefulWidget {
   final ActivitieCardStatic activitie;

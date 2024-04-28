@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 
-class LearnNavBar extends StatelessWidget {
-  final int selectedIndex;
+class LearnNavBar extends StatefulWidget {
   final Function(int) onItemTapped;
   final List<Map<String, dynamic>> navItems;
 
   LearnNavBar({
-    required this.selectedIndex,
     required this.onItemTapped,
     required this.navItems,
   });
 
   @override
+  _LearnNavBarState createState() => _LearnNavBarState();
+}
+
+class _LearnNavBarState extends State<LearnNavBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 16), 
+      padding: const EdgeInsets.only(bottom: 16),
       width: MediaQuery.of(context).size.width * 0.6,
-      height: kToolbarHeight + 16, 
+      height: kToolbarHeight + 16,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -33,13 +44,17 @@ class LearnNavBar extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(navItems.length, (index) {
-            String iconName = navItems[index]['name'].toString().toLowerCase();
-            bool isSelected = selectedIndex == index;
+          children: List.generate(widget.navItems.length, (index) {
+            String iconName =
+                widget.navItems[index]['name'].toString().toLowerCase();
+            bool isSelected = _selectedIndex == index;
             return InkWell(
-              onTap: () => onItemTapped(index),
-              splashColor: Colors.transparent, 
-              highlightColor: Colors.transparent, 
+              onTap: () {
+                widget.onItemTapped(index);
+                _onItemTapped(index);
+              },
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -49,7 +64,7 @@ class LearnNavBar extends StatelessWidget {
                     height: 24,
                   ),
                   Text(
-                    navItems[index]['name'],
+                    widget.navItems[index]['name'],
                     style: TextStyle(
                       fontFamily: "Fieldwork-Geo",
                       fontSize: 12,

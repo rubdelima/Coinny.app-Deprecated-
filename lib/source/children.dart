@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'widgets/global/navBar.dart';
-import 'pages/children/homePage.dart';
-import 'pages/children/activitiesPage.dart';
-import 'pages/children/MascotPage.dart';
-import 'package:learn/utils/modelsClass.dart';
+import '../widgets/global/nav_bar.dart';
+import '../pages/children/homePage.dart';
+import '../pages/children/activitiesPage.dart';
+import '../pages/children/MascotPage.dart';
+import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
 
 class ChildrenMain extends StatefulWidget {
@@ -40,7 +40,6 @@ class _ChildrenMainState extends State<ChildrenMain> {
       _selectedIndex = index;
     });
     _pageController.animateToPage(index,duration: const Duration(milliseconds: 500),curve: Curves.easeInOut,);
-    //_pageController.jumpToPage(index);
   }
 
   @override
@@ -78,7 +77,7 @@ class _ChildrenMainState extends State<ChildrenMain> {
                   right: 32,
                   bottom: 32,
                   child: LearnNavBar(
-                    selectedIndex: _selectedIndex,
+                    //selectedIndex: _selectedIndex,
                     onItemTapped: _onItemTapped,
                     navItems: navItems,
                   ))

@@ -1,64 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/levelBarUtils.dart';
-import '../../widgets/global/app_bar.dart';
-import 'package:learn/components/user_profile.dart';
+import 'package:learn/components.dart';
 import 'package:learn/classes.dart';
 
-class ActivitiesSugestionPage extends StatelessWidget {
+class Sugestion_01 extends StatelessWidget {
   final Children children;
 
-  const ActivitiesSugestionPage({
-    required this.children,
-    Key? key,
-  }) : super(key: key);
+  Sugestion_01({required this.children, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final childrenLevel = getValues();
-
-    return Scaffold(
-      appBar: LearnAppBar(
-        superWidget: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF040862).withOpacity(0.6),
-                  spreadRadius: 0,
-                  blurRadius: 16,
-                  offset: const Offset(0, 0),
-                )
-              ]),
-          child: UserPhotoAndName(
-            person: children,
-            isSugestion: true,
-          ),
-        ),
-        pageIndex: 1,
-        backButtonFunction: () {
-          Navigator.pop(context);
-        },
-        child: Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.fromLTRB(14, 40, 14, 0),
-            child: const Column(
-              children: [
-                Text(
-                  "Sugestão de Atividades",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: "Fieldwork-Geo",
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFFFFFFFF)),
-                ),
-              ],
-            )),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-        child: Column(
+    return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -158,11 +109,7 @@ class ActivitiesSugestionPage extends StatelessWidget {
                     textAlign: TextAlign.justify),
               ),
             ]),
-
-            // Container da sugestão
-
             const SizedBox(height: 54),
-
             Container(
               alignment: Alignment.centerLeft,
               width: MediaQuery.sizeOf(context).width - 32,
@@ -191,9 +138,8 @@ class ActivitiesSugestionPage extends StatelessWidget {
                 //textAlign: TextAlign.start,
               ),
             ),
-
             const SizedBox(height: 40),
-            const Bloquinho(number: 1, text: [
+            const NumberBlock(number: 1, text: [
               TextSpan(
                   text: "Definir com o seu filho qual o local do passeio\n",
                   style: TextStyle(
@@ -203,7 +149,7 @@ class ActivitiesSugestionPage extends StatelessWidget {
                       "Escolha qualquer local que seja divertido para um passeio em família! Vamos exemplificar com um passeio a um restaurante, está bem?")
             ]),
             const SizedBox(height: 24),
-            const Bloquinho(number: 2, text: [
+            const NumberBlock(number: 2, text: [
               TextSpan(
                   text: "Escolher o destino:\n ",
                   style: TextStyle(
@@ -217,7 +163,7 @@ class ActivitiesSugestionPage extends StatelessWidget {
                   style: TextStyle(color: Color(0xFF3034AD), fontSize: 11))
             ]),
             const SizedBox(height: 24),
-            const Bloquinho(number: 3, text: [
+            const NumberBlock(number: 3, text: [
               TextSpan(
                   text: "Mapear os custos.\n",
                   style: TextStyle(
@@ -231,7 +177,7 @@ class ActivitiesSugestionPage extends StatelessWidget {
                   style: TextStyle(color: Color(0xFF3034AD)))
             ]),
             const SizedBox(height: 24),
-            const Bloquinho(number: 4, text: [
+            const NumberBlock(number: 4, text: [
               TextSpan(
                   text: "Replanejem se for preciso!\n",
                   style: TextStyle(
@@ -271,72 +217,6 @@ class ActivitiesSugestionPage extends StatelessWidget {
               ),
             ]),
           ],
-        ),
-      ),
-    );
-  }
-
-  Map<String, dynamic> getValues() {
-    int selected = 0;
-    levelsPontuations.keys.forEach((value) {
-      if (value <= children.pontuation && value >= selected) {
-        selected = value;
-      }
-    });
-    return levelsPontuations[selected] ??
-        {
-          'level': 'Bronze',
-          'class': 'I',
-          'nextLevelValue': 200,
-          'levelValue': 0
-        };
-  }
-}
-
-class Bloquinho extends StatelessWidget {
-  final int number;
-  final List<TextSpan> text;
-  const Bloquinho({required this.number, required this.text, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-          alignment: Alignment.center,
-          height: 40,
-          width: 40,
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              color: const Color(0xFF4B50C0),
-              borderRadius: BorderRadius.circular(10)),
-          child: Text(
-            "$number",
-            style: const TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                fontFamily: "Fieldwork-Geo"),
-          ),
-        ),
-        const SizedBox(
-          width: 8,
-        ),
-        SizedBox(
-          width: MediaQuery.sizeOf(context).width - 96,
-          child: RichText(
-              text: TextSpan(
-                  children: text,
-                  style: const TextStyle(
-                      color: Color(0xFF000000),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      fontFamily: "Fieldwork-Geo")),
-              textAlign: TextAlign.justify),
-        ),
-      ],
-    );
+        );
   }
 }

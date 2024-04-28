@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/activities/activitieCardStatic.dart';
 import 'package:learn/widgets/activities/activitieCardAnimated.dart';
 import 'package:learn/utils/activitiesList.dart';

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/mascot/mascotSideBarIcon.dart';
 import 'package:learn/pages/parents/addDependentPage.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
 
 

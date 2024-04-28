@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:learn/classes.dart';
+import 'package:learn/utils.dart';
 
 class StreakWidget extends StatelessWidget {
-  final int streakDays;
+  final Children child;
 
   const StreakWidget({
     Key? key,
-    required this.streakDays,
+    required this.child,
   }) : super(key: key);
 
   @override
@@ -13,41 +15,38 @@ class StreakWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.63),
-        border: Border.all(color: Colors.white, width: 1.0)
-      ),
+          borderRadius: BorderRadius.circular(6.63),
+          border: Border.all(color: Colors.white, width: 1.0)),
       child: Row(
-        mainAxisSize: MainAxisSize.min, // To fit the content
+        mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
-            'assets/images/appIcons/icon-steak.png', // Use the custom image
-            color: Colors
-                .white, // Apply a color filter if needed // Set your desired width
-            height: 24, // Set your desired height
+            'assets/images/appIcons/icon-steak.png',
+            color: Colors.white,
+            height: 24,
           ),
-          const SizedBox(width: 8), // Spacing between icon and text
+          const SizedBox(width: 8),
           RichText(
             text: TextSpan(
               children: [
                 const TextSpan(
                   text: 'Streak de ',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontFamily: "Fieldwork-Geo",
                     fontWeight: FontWeight.normal,
                   ),
                 ),
                 TextSpan(
-                  text: "$streakDays dias",
+                  text: "${diffDays(child.lastAccsess ?? DateTime.now())} dias",
                   style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontFamily: "Fieldwork-Geo",
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontFamily: "Fieldwork-Geo",
+              ),
             ),
           ),
         ],

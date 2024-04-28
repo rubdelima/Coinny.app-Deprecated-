@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
-import '/widgets/global/learnAppBar.dart';
+import 'package:learn/components/user_profile.dart';
+import '../../widgets/global/app_bar.dart';
 import 'package:learn/widgets/monitoring/monitoramento.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/pages/parents/addDependentPage.dart';
 import 'package:provider/provider.dart';
 
@@ -10,16 +10,13 @@ class ProfilePage extends StatelessWidget {
   final ValueNotifier<double> pagePosition;
   final PageController pageController;
 
-  ProfilePage(
-      {required this.pagePosition,
-      required this.pageController});
+  ProfilePage({required this.pagePosition, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
     VolatileParents parent = Provider.of<VolatileParents>(context);
     return Scaffold(
       appBar: LearnAppBar(
-        heigth: 248,
           pageIndex: 2,
           pagePosition: pagePosition.value,
           backButtonFunction: () {
@@ -44,12 +41,7 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               UserPhotoAndName(
-                userName: parent.value.name,
-                userPhotoPath: parent.value.photoPath,
-                firstLine: "Seja bem-vindo,\n",
-                fontWeight1: FontWeight.w400,
-                secondLine: parent.value.name,
-                fontWeight2: FontWeight.bold,
+                person: parent.value,
               ),
             ]),
           )),
@@ -104,7 +96,7 @@ class ProfilePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: const Color(0xFFfffbfe),
                             borderRadius: BorderRadius.circular(5),
-                            boxShadow:  [
+                            boxShadow: [
                               BoxShadow(
                                 color: Color(0xFF5C5C5C).withOpacity(0.2),
                                 blurRadius: 10,
@@ -142,9 +134,10 @@ class ProfilePage extends StatelessWidget {
                       ))
                   .toList(),
             ),
-          const SizedBox(height: 80,)
-          ]
-          ),
+            const SizedBox(
+              height: 80,
+            )
+          ]),
         ),
       ),
     );

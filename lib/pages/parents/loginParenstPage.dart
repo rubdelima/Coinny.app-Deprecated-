@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learn/widgets/login/loginEnterButton.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class LoginInputFields extends StatelessWidget {
   final TextEditingController emailController;

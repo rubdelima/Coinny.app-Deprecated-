@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/login/loginEnterButton.dart';
-import 'package:learn/widgets/global/boxedNumber.dart';
+import 'package:learn/components/boxed_number.dart';
 
 class VerificationCodePage extends StatelessWidget {
   final String childrenName;

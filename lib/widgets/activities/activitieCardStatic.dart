@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:learn/utils/animatedProgressBar.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'dart:ui';
 
 class ActivitieCardStatic extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 Children luciano = Children(
     childrenCode: "1111",

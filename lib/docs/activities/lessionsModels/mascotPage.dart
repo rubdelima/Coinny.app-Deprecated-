@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/backButton.dart';
-import 'package:learn/widgets/global/commonButton.dart';
+import 'package:learn/components/back_button.dart';
+import 'package:learn/components/learn_button.dart';
 
 class MascotPage extends StatelessWidget {
   final PageController pageController;

@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:learn/classes/person.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:learn/utils/levelBarUtils.dart';
+import 'package:flutter/material.dart';
 
 final DateTime now = DateTime.now();
 final today = DateTime(now.year, now.month, now.day);
@@ -11,13 +12,10 @@ class AcheivmentsDate {
   AcheivmentsDate({required this.date, required this.id});
 }
 
-class Children {
+class Children extends Person {
   String childrenCode;
-  String name;
-  String photoPath;
   DateTime birthdate;
   int pontuation;
-  DateTime? lastAccsess;
   final List<String> goals;
   final List<List<int>> activities;
   final List<AcheivmentsDate> acheivments;
@@ -26,17 +24,17 @@ class Children {
 
   Children({
     required this.childrenCode,
-    required this.name,
     required this.birthdate,
-    this.photoPath = "assets/images/appImages/ianzinho.jpg",
     this.pontuation = 0,
     this.activities = const [],
     this.goals = const [],
     this.acheivments = const [],
-    this.lastAccsess,
     this.lastActivitie = 0,
     this.xpPerDay = const {},
-  });
+    required String name,
+    required String photoPath,
+    DateTime? lastAccsess,
+  }) : super(name: name, photoPath: photoPath, lastAccsess: lastAccsess);
 
   Map<String, dynamic> getJson() {
     return {
@@ -71,6 +69,46 @@ class Children {
         .doc(childrenCode)
         .set(getJson())
         .catchError((error) => print('Erro ao adicionar documento: $error'));
+  }
+
+  Map<String, dynamic> getValues() {
+    int selected = 0;
+    levelsPontuations.keys.forEach((value) {
+      if (value <= pontuation && value >= selected) {
+        selected = value;
+      }
+    });
+    return levelsPontuations[selected] ?? {'level' : 'Bronze', 'class' : 'I', 'nextLevelValue' : 200, 'levelValue': 0};
+  }
+
+  String getLevel(){
+    return getValues()['level'] as String;
+  }
+
+  String getClass(){
+    return getValues()['class'] as String;
+  }
+
+  
+  Stack getShield() {
+    return Stack(alignment: Alignment.center, children: [
+      Center(
+        child: Image.asset(
+          'assets/images/appIcons/badge-${getLevel().toLowerCase()}-${"blue"}.png',
+          width: 72,
+        ),
+      ),
+      Container(
+          padding: const EdgeInsets.only(bottom: 5),
+          child: Text(
+            getClass(),
+            style: const TextStyle(
+                color: Color(0xFF040862),
+                fontSize: 32,
+                fontFamily: 'Fieldwork-Geo',
+                fontWeight: FontWeight.w800),
+          ))
+    ]);
   }
 }
 
@@ -171,125 +209,12 @@ class VolatileChildren extends ValueNotifier<Children> {
         break;
       }
     }
-    if (!added) {children.activities.add([]);}
+    if (!added) {
+      children.activities.add([]);
+    }
     children.acheivments.add(AcheivmentsDate(date: today, id: 4));
     children.pontuation += 100;
     children.update();
     notifyListeners();
   }
-}
-
-class Parents {
-  String name;
-  String photoPath;
-  final List<Children> dependents;
-
-  Parents({
-    required this.name,
-    this.photoPath = "assets/images/appImages/ianzinho.jpg",
-    this.dependents = const [],
-  });
-
-  Map<String, dynamic> getJson() {
-    return {
-      'name': name,
-      'photoPath': photoPath,
-      'dependents': dependents.map((e) => e.childrenCode).toList(),
-    };
-  }
-}
-
-class VolatileParents extends ValueNotifier<Parents> {
-  Parents parents;
-  VolatileParents({required this.parents}) : super(parents);
-
-  void setParents(Parents parents) {
-    this.parents = parents;
-    notifyListeners();
-  }
-
-  void addDependent(Children children) {
-    parents.dependents.add(children);
-    notifyListeners();
-  }
-}
-
-Future<Parents> loadParent(String email) async {
-  DocumentSnapshot parentData =
-      await FirebaseFirestore.instance.collection('parent').doc(email).get();
-
-  if (parentData.exists) {
-    String name = parentData.get("name");
-    String photoPath = parentData.get("photoPath");
-    List<dynamic> getList = parentData.get("dependents");
-    List<String> dependents = getList.map((item) => item.toString()).toList();
-    List<Future<Children>> futureChildrenList =
-        dependents.map((e) => loadChildren(e)).toList();
-    List<Children> childrenList = await Future.wait(futureChildrenList);
-    return Parents(name: name, photoPath: photoPath, dependents: childrenList);
-  }
-  throw Exception();
-}
-
-int diffYears(DateTime birthDate) {
-  DateTime now = DateTime.now();
-  int years = now.year - birthDate.year;
-  if (now.month < birthDate.month ||
-      (now.month == birthDate.month && now.day < birthDate.day)) {
-    years--;
-  }
-  return years;
-}
-
-int diffDays(DateTime date) {
-  DateTime now = DateTime.now();
-  return now.difference(date).inDays;
-}
-
-class Lession {
-  final int id;
-  final String title;
-  final String description;
-  Type? page;
-
-  Lession({
-    required this.id,
-    required this.title,
-    required this.description,
-    this.page,
-  });
-}
-
-class Activitie {
-  final int id;
-  final String title;
-  final String description;
-  final String pageTitle;
-  final String pageDescription;
-  final int level;
-  final List<Color> backgroundColors;
-  final List<Lession> lessionsList;
-  final String? iconPath;
-
-  Activitie({
-    required this.id,
-    required this.title,
-    required this.description,
-    this.pageTitle = "",
-    this.pageDescription = "",
-    this.lessionsList = const [],
-    this.level = 1,
-    this.backgroundColors = const [Color(0XFF1290A2), Color(0xFF82DA59)],
-    this.iconPath,
-  });
-}
-
-String getLevel(int pontuation){
-  for (var val in levelsPontuations.entries){
-    if (pontuation >= val.key && pontuation < val.value['nextLevelValue']){
-      return "${val.value['level']} ${val.value['class']}";
-    }
-  }
-
-  return "Diamante III";
 }

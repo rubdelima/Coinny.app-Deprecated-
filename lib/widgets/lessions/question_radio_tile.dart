@@ -21,7 +21,6 @@ class QuestionRadioTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determine the background and border color based on the selection and correctness.
     Color backgroundColor = Colors.transparent;
     Color borderColor = const Color(0xFFB6B6B6);
     Color checkIconColor = const Color(0xFFB6B6B6);
@@ -29,10 +28,10 @@ class QuestionRadioTile extends StatelessWidget {
     if (isSelected) {
       borderColor = isCorrect
           ? Colors.green
-          : const Color(0xFFFFA200); // Green for correct, orange for incorrect.
-      backgroundColor = Colors.transparent; // No border when selected.
+          : const Color(0xFFFFA200); 
+      backgroundColor = Colors.transparent; 
       checkIconColor = isCorrect ? Colors.green
-          : const Color(0xFFFFA200); // White checkmark when selected.
+          : const Color(0xFFFFA200); 
     }
 
     return CompositedTransformTarget(
@@ -40,7 +39,7 @@ class QuestionRadioTile extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           height: 0.1*(MediaQuery.of(context).size.height),
           decoration: BoxDecoration(
             color: backgroundColor,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/backButton.dart';
-import 'package:learn/widgets/global/commonButton.dart';
-import 'package:learn/widgets/lessions/questionRadioTile.dart';
+import 'package:learn/components/back_button.dart';
+import 'package:learn/components/learn_button.dart';
+import 'package:learn/widgets/lessions/question_radio_tile.dart';
 
 class QuestionPage extends StatefulWidget {
   final PageController pageController;
