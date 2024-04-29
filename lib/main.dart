@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +8,7 @@ import 'pages/parents/signUp.dart';
 import 'source/parents.dart';
 import 'source/children.dart';
 import 'docs/activities/lession01Main.dart';
-import 'package:learn/classes/parents.dart';
-import 'package:learn/classes/person.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:learn/classes/children.dart';
+import 'package:learn/classes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: AuthenticationChecker(),
+      home: const Authenticator(),
       routes: {
         // rotas da aplicação
         '/signUp': (context) => SignParentsPage(),
@@ -48,50 +43,33 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthenticationChecker extends StatelessWidget {
+class Authenticator extends StatelessWidget {
+  const Authenticator({super.key});
+
   @override
   Widget build(BuildContext context) {
-    User? currentUser = FirebaseAuth.instance.currentUser;
+    final currentUser = FirebaseAuth.instance.currentUser;
 
-    if (currentUser != null && currentUser.email != null) {
-      // acessa a database para verificar os dados do usuário
-      return FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance
-            .collection('parent')
-            .doc(currentUser.email)
-            .get(),
+    if (currentUser != null) {
+      return FutureBuilder<Parents>(
+        future: loadParent(currentUser.email!),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
-          } else if (snapshot.hasData && snapshot.data!.data() != null) {
-            var userData = snapshot.data!.data() as Map<String, dynamic>;
-            String name = userData['name'] ?? 'Sem nome';
-            String photoPath = userData['photoPath'] ?? 'Sem foto';
-            List<dynamic> dependents = userData['dependents'] ?? ["1111"];
-            print('Name: $name');
-            print('Photo Path: $photoPath');
-            print('Dependents: $dependents');
-            /*Navigator.pushReplacementNamed(
-              context,
-              '/parentsMain',
-              arguments: Parents(
-                name: name,
-                photoPath: photoPath,
-                email: currentUser.email!,
-                // COMPLETAR A LÓGICA AQUI
-                //dependents: [1111, 2222, 9892, 1022],
-              ),*/
-
-            return LoginPage();
-          } else {
-            return SignParentsPage();
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              Future.microtask(() => Navigator.pushReplacementNamed(
+                  context, '/parentsMain',
+                  arguments: snapshot.data));
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
           }
+          return const Scaffold(body: Center(child: CircularProgressIndicator()));
         },
       );
-    } else {
-      return LoginPage();
     }
+    // Retorna a LoginPage se não houver usuário atual
+    return LoginPage();
   }
 }

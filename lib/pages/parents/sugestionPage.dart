@@ -38,21 +38,7 @@ class ActivitiesSugestionPage extends StatelessWidget {
         backButtonFunction: () {
           Navigator.pop(context);
         },
-        child: Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.fromLTRB(14, 40, 14, 0),
-            child: const Column(
-              children: [
-                Text(
-                  "Sugestão de Atividades",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: "Fieldwork-Geo",
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFFFFFFFF)),
-                ),
-              ],
-            )),
+        pageTitle: "Sugestão de Atividades",
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
@@ -86,11 +72,9 @@ class ActivitiesSugestionPage extends StatelessWidget {
                             "do Coinny, e aprendeu os seguintes conceitos:\n"),
                     const WidgetSpan(child: SizedBox(height: 32)),
                     const TextSpan(
-                        text:
-                            " *  Pesquisa de preços dos produtos desejados\n"),
-                    const TextSpan(text: " *  Criação de orçamentos\n"),
-                    const TextSpan(
-                        text: " *  Lidando com imprevistos no orçamento\n"),
+                        text: " *  Pesquisa de preços dos produtos desejados\n"
+                                " *  Criação de orçamentos\n" +
+                            " *  Lidando com imprevistos no orçamento\n"),
                   ],
                       style: const TextStyle(
                           fontSize: 12,

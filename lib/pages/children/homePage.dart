@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/activities/activitieCardAnimated.dart';
-import 'package:learn/widgets/activities/activitieCardStatic.dart';
-import 'package:learn/widgets/conquists/achivievementWidget.dart';
 import 'package:learn/components/user_profile.dart';
 import 'package:learn/widgets.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/utils/activitiesList.dart';
 import 'package:provider/provider.dart';
-import 'package:learn/widgets/login/LogoutButton.dart';
-
 
 class ChildrenHomePage extends StatelessWidget {
   final ValueNotifier<double> pagePosition;
@@ -76,7 +71,6 @@ class ChildrenHomePage extends StatelessWidget {
               childAcheivments: child.value.acheivments,
             ),
             const SizedBox(height: 80,),
-            LogoutButton(),
           ],
         ),
       ),

@@ -43,6 +43,7 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 32),
               UserPhotoAndName(
                 person: parent.value,
+                logout: true,
               ),
             ]),
           )),
