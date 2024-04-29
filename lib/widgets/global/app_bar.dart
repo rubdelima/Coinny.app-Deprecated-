@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/utils.dart';
+import 'package:learn/components/back_button.dart';
 
 class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? child;
@@ -43,7 +44,7 @@ class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              height: 240,
+              height: 160 + (child != null || superWidget != null ? 80 : 0),
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 gradient: finalGradient,
@@ -59,36 +60,33 @@ class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
             if (backButtonFunction != null || pageTitle != null)
               Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-                  child: Stack(children: [
-                    if(pageTitle != null)
-                      Center(
-                        child: CoinnyText(
-                          pageTitle as String,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFFFFFFF),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: IconButton(
-                          icon:
-                              const Icon(Icons.arrow_back, color: Colors.black),
-                          onPressed: backButtonFunction,
-                          iconSize: 24,
-                        ))
-                  ])),
+                      const EdgeInsets.symmetric(vertical: 56, horizontal: 16),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (backButtonFunction != null)
+                          LearnBackButton(
+                            buttonColor: const Color(0xFFFFFFFF),
+                            iconColor: const Color(0xff101573),
+                            onPressed: backButtonFunction,
+                          ),
+                        if (pageTitle != null)
+                          CoinnyText(
+                            pageTitle as String,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        if (backButtonFunction != null)
+                          const SizedBox(height: 40, width: 40)
+                      ])),
             if (superWidget != null)
-              Positioned(top: 200, left: 16, right: 16, child: superWidget!)
+              Positioned(bottom: 4, left: 16, right: 16, child: superWidget!)
           ],
         ));
   }
 
   @override
-  Size get preferredSize =>
-      Size.fromHeight((superWidget == null || child == null) ? 240 : 324);
+  Size get preferredSize => Size.fromHeight(
+      164 + (child != null ? 80 : superWidget == null ? 0 : 40) + (superWidget != null ? 64 : 0));
 }

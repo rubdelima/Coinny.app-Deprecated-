@@ -21,6 +21,12 @@ class Parents extends Person {
       'dependents': dependents.keys,
     };
   }
+
+  int getPontuation(){
+    return dependents.isEmpty
+    ? 0
+    : (dependents.values.fold(0, (sum, dependent) => sum + dependent.pontuation) / dependents.length).round();
+  }
 }
 
 class VolatileParents extends ValueNotifier<Parents> {
