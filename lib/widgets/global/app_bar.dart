@@ -44,7 +44,7 @@ class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              height: 240,
+              height: 160 + (child != null || superWidget != null ? 80 : 0),
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 gradient: finalGradient,
@@ -81,12 +81,12 @@ class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
                           const SizedBox(height: 40, width: 40)
                       ])),
             if (superWidget != null)
-              Positioned(top: 200, left: 16, right: 16, child: superWidget!)
+              Positioned(bottom: 4, left: 16, right: 16, child: superWidget!)
           ],
         ));
   }
 
   @override
   Size get preferredSize => Size.fromHeight(
-      164 + (child != null ? 80 : 0) + (superWidget != null ? 80 : 0));
+      164 + (child != null ? 80 : superWidget == null ? 0 : 40) + (superWidget != null ? 64 : 0));
 }
