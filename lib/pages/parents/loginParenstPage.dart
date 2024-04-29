@@ -129,15 +129,18 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
+                          print('Credencial: $credential');
 
                           User? parent = credential.user;
+                          print('Parent: $parent');
                           if (parent != null) {
                             Parents parentUser =
                                 await loadParent(parent.email ?? "");
                             Navigator.pushReplacementNamed(
                                 context, '/parentsMain',
                                 arguments: parentUser);
-                                print('Parent user is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA $parentUser');
+                            print(
+                                'Parent user is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA $parentUser');
                           }
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
