@@ -28,7 +28,7 @@ class ParentsHPage extends StatelessWidget {
           pageIndex: 1,
           pagePosition: pagePosition.value,
           child: Container(
-            padding: const EdgeInsets.fromLTRB(14, 56, 14, 0),
+            padding: const EdgeInsets.fromLTRB(14, 14, 14, 0),
             child: UserPhotoAndName(
               person: parent.value,
             ),

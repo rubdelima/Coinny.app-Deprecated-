@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/components/streak.dart';
+import 'package:learn/widgets/login/LogoutButton.dart';
 
 class UserPhotoAndName extends StatelessWidget {
   final Person person;
@@ -16,45 +17,64 @@ class UserPhotoAndName extends StatelessWidget {
   Widget build(BuildContext context) {
     Children? child = person is Children ? person as Children : null;
 
-    return Row(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(50),
-          child: Image.asset(person.photoPath, height: 60),
-        ),
-        const SizedBox(width: 8),
-        RichText(
-          text: TextSpan(
+    return Padding(
+      padding: const EdgeInsets.only(top: 32.0), // Adjust the padding as needed
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Logout button in its own row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextSpan(
-                text: "${isSugestion ? person.name : "Olá"}\n",
-                style: TextStyle(
-                  fontSize: isSugestion ? 18 : 14,
-                  fontWeight: isSugestion ? FontWeight.bold : FontWeight.normal,
-                ),
-              ),
-              TextSpan(
-                text: isSugestion
-                    ? "${child!.getLevel()} ${child.getClass()}"
-                    : person.name,
-                style: TextStyle(
-                  fontSize: isSugestion ? 14 : 18,
-                  fontWeight: isSugestion ? FontWeight.normal : FontWeight.bold,
-                ),
-              ),
+              LogoutButton(), // Your custom logout button widget
             ],
-            style: TextStyle(
-              color: isSugestion ? const Color(0xFF0D116E) : Colors.white,
-              fontFamily: "Fieldwork-Geo",
-            ),
           ),
-        ),
-        const Spacer(),
-        if (person is Children)
-          isSugestion
-              ? child!.getShield()
-              : StreakWidget(child: person as Children)
-      ],
+          // The Row with the user's details
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(person.photoPath, height: 60),
+              ),
+              const SizedBox(width: 8),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "${isSugestion ? person.name : "Olá"}\n",
+                      style: TextStyle(
+                        fontSize: isSugestion ? 18 : 14,
+                        fontWeight:
+                            isSugestion ? FontWeight.bold : FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: isSugestion
+                          ? "${child!.getLevel()} ${child.getClass()}"
+                          : person.name,
+                      style: TextStyle(
+                        fontSize: isSugestion ? 14 : 18,
+                        fontWeight:
+                            isSugestion ? FontWeight.normal : FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                  style: TextStyle(
+                    color: isSugestion ? const Color(0xFF0D116E) : Colors.white,
+                    fontFamily: "Fieldwork-Geo",
+                  ),
+                ),
+              ),
+              const Spacer(),
+              if (person is Children)
+                isSugestion
+                    ? child!.getShield()
+                    : StreakWidget(child: person as Children)
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

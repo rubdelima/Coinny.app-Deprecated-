@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
           ),
           home: LoginPage(),
           routes: {
+            '/login': (context) => LoginPage(), // '/login' is the route name
             '/parentsMain': (context) => ParentsMain(),
             '/childrenMain': (context) => ChildrenMain(),
             '/signUpParents': (context) => SignParentsPage(),
