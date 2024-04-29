@@ -1,23 +1,54 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/login/loginEnterButton.dart';
+import 'package:learn/components/gradient_button.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
 
 class LoginInputFields extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final TextEditingController nameController;
 
   const LoginInputFields({
     Key? key,
     required this.emailController,
     required this.passwordController,
+    required this.nameController,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 48,
+          child: TextField(
+            controller: nameController,
+            style: const TextStyle(
+                fontFamily: "Fieldwork-Geo",
+                fontWeight: FontWeight.w400,
+                color: Color(0xff5A5A5A),
+                fontSize: 12),
+            decoration: InputDecoration(
+              labelStyle: const TextStyle(
+                  fontFamily: "Fieldwork-Geo",
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff9A9A9A),
+                  fontSize: 12),
+              labelText: 'Nome',
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(
+                  color: Color(0xff7A7FFF),
+                ),
+              ),
+            ),
+            keyboardType: TextInputType.emailAddress,
+          )),
+        const SizedBox(height: 16),
         SizedBox(
             height: 48,
             child: TextField(
@@ -73,7 +104,8 @@ class LoginInputFields extends StatelessWidget {
             ),
             obscureText: true,
           ),
-        )
+        ),
+        
       ],
     );
   }
@@ -87,12 +119,8 @@ class SignParentsPage extends StatefulWidget {
 class _SignParentsPageState extends State<SignParentsPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
-  Future<void> signInWithFirebase() async {
-    // Your existing signInWithFirebase function remains unchanged.
-  }
-
-  // New signup function
   Future<void> signUpWithFirebase() async {
     try {
       final credential =
@@ -100,8 +128,26 @@ class _SignParentsPageState extends State<SignParentsPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      
-      Navigator.pushReplacementNamed(context, '/parentsMain');
+
+      if (credential.user != null) {
+        String defaultName = _nameController.text.isEmpty
+            ? "Default Name"
+            : _nameController.text; 
+        String defaultPhotoPath =
+            "assets/images/appImages/joana-dias.png"; // imagem padrao
+
+        await FirebaseFirestore.instance
+            .collection('parent')
+            .doc(credential.user!.email)
+            .set({
+          'name': defaultName,
+          'photoPath': defaultPhotoPath,
+          'dependents':
+              ["1111"]
+        });
+
+        Navigator.pushReplacementNamed(context, '/login');
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -112,6 +158,7 @@ class _SignParentsPageState extends State<SignParentsPage> {
       }
     }
   }
+
 
   @override
   void dispose() {
@@ -142,9 +189,10 @@ class _SignParentsPageState extends State<SignParentsPage> {
               LoginInputFields(
                 emailController: _emailController,
                 passwordController: _passwordController,
+                nameController: _nameController,
               ),
               const SizedBox(height: 32),
-              LoginEnterButton(
+              CoinnyGradientButton(
                 onPressed: () {
                   signUpWithFirebase();
                 },

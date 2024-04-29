@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/mascot/mascote.dart';
 import 'package:learn/widgets/mascot/mascotBar.dart';
 import 'package:learn/widgets/mascot/mascotSideBar.dart';
-import 'package:learn/widgets/global/globalProgressWidget.dart';
+import 'package:learn/widgets.dart';
 import 'package:provider/provider.dart';
 
 

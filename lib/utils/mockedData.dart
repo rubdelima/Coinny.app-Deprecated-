@@ -1,4 +1,4 @@
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 Children luciano = Children(
     childrenCode: "1111",
@@ -54,8 +54,8 @@ Children carlos = Children(
       today.subtract(const Duration(days: 0)): 80,
     });
 
-
 Parents joana = Parents(
+    email: "teste@gmail.com",
     name: "Joana Dias",
-    dependents: [luciano, carlos],
+    dependents: {"1111" : luciano, "2222" : carlos},
     photoPath: "assets/images/appImages/joana-dias.png");

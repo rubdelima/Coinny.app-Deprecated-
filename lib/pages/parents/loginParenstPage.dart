@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/login/loginEnterButton.dart';
+import 'package:learn/components/gradient_button.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class LoginInputFields extends StatelessWidget {
   final TextEditingController emailController;
@@ -121,7 +121,7 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                     passwordController: _passwordController,
                   ),
                   const SizedBox(height: 32),
-                  LoginEnterButton(
+                  CoinnyGradientButton(
                       onPressed: () async {
                         try {
                           final credential = await FirebaseAuth.instance
@@ -129,14 +129,18 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
+                          print('Credencial: $credential');
 
                           User? parent = credential.user;
+                          print('Parent: $parent');
                           if (parent != null) {
                             Parents parentUser =
                                 await loadParent(parent.email ?? "");
                             Navigator.pushReplacementNamed(
                                 context, '/parentsMain',
                                 arguments: parentUser);
+                            print(
+                                'Parent user is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA $parentUser');
                           }
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
@@ -147,10 +151,11 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                             print('the error is $e');
                           }
                           rethrow;
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        } on Exception catch (e) {
+                          String error = e.toString();
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
-                                  'As credenciais informadas não são válidas, tente novamente')));
+                                  'As credenciais informadas não são válidas, tente novamente $error')));
                         }
                       },
                       title: "Entrar",

@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
-import '/widgets/global/learnAppBar.dart';
+import 'package:learn/components.dart';
+import 'package:learn/widgets.dart';
+
+
 import 'package:learn/widgets/monitoring/monitoramento.dart';
-import 'package:learn/utils/modelsClass.dart';
-import 'package:learn/pages/parents/addDependentPage.dart';
+import 'package:learn/classes.dart';
+import 'package:learn/pages/parents/edit_dependent.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   final ValueNotifier<double> pagePosition;
   final PageController pageController;
 
-  ProfilePage(
-      {required this.pagePosition,
-      required this.pageController});
+  ProfilePage({required this.pagePosition, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
     VolatileParents parent = Provider.of<VolatileParents>(context);
     return Scaffold(
       appBar: LearnAppBar(
-        heigth: 248,
           pageIndex: 2,
           pagePosition: pagePosition.value,
           backButtonFunction: () {
@@ -30,8 +29,7 @@ class ProfilePage extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            padding: const EdgeInsets.fromLTRB(16, 40, 16, 32),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
             child: Column(children: [
               const Text(
                 'Meu perfil',
@@ -44,15 +42,12 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               UserPhotoAndName(
-                userName: parent.value.name,
-                userPhotoPath: parent.value.photoPath,
-                firstLine: "Seja bem-vindo,\n",
-                fontWeight1: FontWeight.w400,
-                secondLine: parent.value.name,
-                fontWeight2: FontWeight.bold,
+                person: parent.value,
+                logout: true,
               ),
             ]),
           )),
+      
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
@@ -95,7 +90,8 @@ class ProfilePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddDependentPage()));
+                              builder: (context) =>
+                                  AddDependentPage(parent: parent)));
                     },
                     child: Container(
                         padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
@@ -104,7 +100,7 @@ class ProfilePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: const Color(0xFFfffbfe),
                             borderRadius: BorderRadius.circular(5),
-                            boxShadow:  [
+                            boxShadow: [
                               BoxShadow(
                                 color: Color(0xFF5C5C5C).withOpacity(0.2),
                                 blurRadius: 10,
@@ -136,15 +132,17 @@ class ProfilePage extends StatelessWidget {
               height: 16,
             ),
             Column(
-              children: parent.value.dependents
+              children: parent.value.dependents.values
+                  .toList()
                   .map((child) => ChildMonitoringBox(
                         child: child,
                       ))
                   .toList(),
             ),
-          const SizedBox(height: 80,)
-          ]
-          ),
+            const SizedBox(
+              height: 80,
+            )
+          ]),
         ),
       ),
     );

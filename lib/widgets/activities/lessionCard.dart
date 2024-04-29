@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/classes.dart';
 
 class LessionCardStatic extends StatelessWidget {
-  final Lession lession;
+  final Lesson lession;
   final bool isLocked;
   final bool isFinished;
-  final VoidCallback callback;
+  final VolatileChildren children;
 
   LessionCardStatic(
       {required this.lession,
+      required this.children,
       this.isLocked = true,
       this.isFinished = false,
-      required this.callback,
       super.key});
 
   @override
@@ -72,7 +72,7 @@ class LessionCardStatic extends StatelessWidget {
       ),
       onTap: () {
         if (!isLocked && !isFinished) {
-        callback();
+        lession.launchLession(context, children);
         }
       },
     );

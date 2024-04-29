@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/widgets/global/app_bar.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/widgets/monitoring/childrenMonitoringGraph.dart';
 import 'package:learn/widgets/monitoring/childrenMonitoringSelector.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +34,6 @@ class _MonitoringPageState extends State<MonitoringPage> {
       appBar: LearnAppBar(
         pageIndex: 2,
         pagePosition: widget.pagePosition.value,
-        heigth: 248,
         child: Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.fromLTRB(14, 48, 14, 0),
@@ -73,7 +72,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
                 onTap: () => _onChildTap(null),
                 child: null,
               ),
-              ...parent.value.dependents
+              ...parent.value.dependents.values.toList()
                   .map((child) => ChildSelect(
                         isSelected: selectedChild == child,
                         onTap: () => _onChildTap(child),
@@ -100,7 +99,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
               )]
             ) ,
             child:ChildrenMonitoringGraph(
-            children: parent.value.dependents,
+            children: parent.value.dependents.values.toList(),
             selectedChild: selectedChild,
           ),
           ),

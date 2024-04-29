@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/activities/activitieCardAnimated.dart';
-import 'package:learn/widgets/activities/activitieCardStatic.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
-import 'package:learn/widgets/profile/StreakWidget.dart';
-import 'package:learn/widgets/conquists/achivievementWidget.dart';
-import 'package:learn/widgets/profile/user-profile.dart';
-import 'package:learn/widgets/global/globalProgressWidget.dart';
-import 'package:learn/utils/modelsClass.dart';
+import 'package:learn/components/user_profile.dart';
+import 'package:learn/widgets.dart';
+import 'package:learn/classes.dart';
 import 'package:learn/utils/activitiesList.dart';
 import 'package:provider/provider.dart';
-
 
 class ChildrenHomePage extends StatelessWidget {
   final ValueNotifier<double> pagePosition;
@@ -22,8 +16,7 @@ class ChildrenHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     VolatileChildren child = Provider.of<VolatileChildren>(context);
     return Scaffold(
-      appBar: LearnAppBarSuper(
-        superHeigth: 320,
+      appBar: LearnAppBar(
         superWidget: GlobalProgress(
           pontuation: child.value.pontuation,
           isMascot: false,
@@ -31,22 +24,9 @@ class ChildrenHomePage extends StatelessWidget {
         pageIndex: 1,
         pagePosition: pagePosition.value,
         child: Container(
-            padding: const EdgeInsets.fromLTRB(14, 54, 14, 0),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  UserPhotoAndName(
-                    userName: child.value.name,
-                    userPhotoPath: child.value.photoPath,
-                    firstLine: "Seja bem-vindo,\n",
-                    fontWeight1: FontWeight.w400,
-                    secondLine: child.value.name,
-                    fontWeight2: FontWeight.w500,
-                  ),
-                  StreakWidget(
-                      streakDays:
-                          diffDays(child.value.lastAccsess ?? DateTime.now())),
-                ])),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: UserPhotoAndName(person: child.value)
+                ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
@@ -90,7 +70,7 @@ class ChildrenHomePage extends StatelessWidget {
             AchievementsWidget(
               childAcheivments: child.value.acheivments,
             ),
-            const SizedBox(height: 80,)
+            const SizedBox(height: 80,),
           ],
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/loginParenstPage.dart';
 import 'package:learn/widgets/login/BoxSelectorLogin.dart';
 import 'children/loginChildPage.dart';
-import 'package:learn/widgets/login/loginEnterButton.dart';
+import 'package:learn/components/gradient_button.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
 
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                     title: 'Sou responsável',
                   ),
                   const SizedBox(height: 32),
-                  LoginEnterButton(
+                  CoinnyGradientButton(
                       onPressed: () {
                         if (userType == 'aprendiz') {
                           Navigator.pushReplacement(

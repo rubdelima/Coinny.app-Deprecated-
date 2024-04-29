@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/utils/modelsClass.dart';
-import 'package:learn/widgets/global/learnAppBar.dart';
+import 'package:learn/classes.dart';
+import 'package:learn/widgets/global/app_bar.dart';
 import 'package:learn/widgets/activities/activitiesList.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,6 @@ class ChildrenActivitiesPage extends StatelessWidget {
       appBar: LearnAppBar(
         pageIndex: 1,
         pagePosition: pagePosition.value,
-        heigth: 210,
         child: Container(
           padding: const EdgeInsets.fromLTRB(16, 64, 16, 0),
           child:RichText(
