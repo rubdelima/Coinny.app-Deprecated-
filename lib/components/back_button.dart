@@ -22,7 +22,7 @@ class LearnBackButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
               child: IconButton(
                 icon: Icon(Icons.arrow_back, color: iconColor),
-                iconSize: 18,
+                iconSize: 24,
                 onPressed: onPressed
               ),
             );

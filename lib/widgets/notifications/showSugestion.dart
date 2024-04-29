@@ -1,23 +1,22 @@
 import "package:flutter/material.dart";
+import "package:learn/classes.dart";
+import 'package:learn/pages/parents/sugestionPage.dart';
 
 class ShowSugestion extends StatelessWidget {
-  //final double heigth;
   final double width;
-  final String childName;
+  final Children children;
   final String activitieName;
-  final VoidCallback? onPressed;
 
   ShowSugestion(
       {required this.width,
-      required this.childName,
+      required this.children,
       required this.activitieName,
-      this.onPressed,
       super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(16,16,16,24),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       width: width,
       decoration: BoxDecoration(
           color: const Color(0xFF4B50C0),
@@ -42,15 +41,20 @@ class ShowSugestion extends StatelessWidget {
             ),
             const Spacer(),
             InkWell(
-                onTap: onPressed,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ActivitiesSugestionPage(children: children)));
+                },
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(8, 7, 8, 0),
                   height: 30,
                   width: 80,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFFFFF).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(5)
-                  ),
+                      color: const Color(0xFFFFFFFF).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(5)),
                   child: const Text(
                     "Ver sugestão",
                     style: TextStyle(
@@ -68,7 +72,7 @@ class ShowSugestion extends StatelessWidget {
             text: TextSpan(
                 children: [
               TextSpan(
-                  text: childName,
+                  text: children.name,
                   style: const TextStyle(fontWeight: FontWeight.w700)),
               const TextSpan(text: " finalizou a atividade de "),
               TextSpan(

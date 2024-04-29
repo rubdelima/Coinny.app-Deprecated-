@@ -9,3 +9,9 @@ export "package:learn/widgets/profile/child_overview.dart";
 // Settings
 export 'package:learn/widgets/settings/selectedGoals.dart';
 export 'package:learn/widgets/settings/childrenDataBox.dart';
+
+// Notifications
+export 'package:learn/widgets/notifications/showSugestion.dart';
+
+// Monitoring
+export 'package:learn/widgets/monitoring/monitoramento.dart';

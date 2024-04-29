@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn/pages/parents/homePage.dart';
+import 'package:learn/pages/parents/home.dart';
 import 'package:learn/widgets.dart';
 import '../pages/parents/profilePage.dart';
 import '../pages/parents/monitoringPage.dart';
