@@ -9,6 +9,7 @@ import 'source/parents.dart';
 import 'source/children.dart';
 import 'pages/parents/signUp.dart';
 import 'package:learn/classes.dart';
+import 'pages/parents/signUp.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       home: AuthenticationChecker(),
       routes: {
+        'signUp': (context) => SignParentsPage(),
         '/login': (context) => LoginPage(),
         '/parentsMain': (context) => ParentsMain(),
         '/childrenMain': (context) => ChildrenMain(),
@@ -48,6 +50,7 @@ class AuthenticationChecker extends StatelessWidget {
 
     if (currentUser != null) {
       // Debug, aqui vemos que o estado está sendo salvo
+      print('User: $currentUser');
       print('User Name: ${currentUser.displayName}');
       print('User Email: ${currentUser.email}');
 
