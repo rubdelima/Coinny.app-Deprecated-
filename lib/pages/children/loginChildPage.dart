@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
-import 'package:learn/widgets/login/loginEnterButton.dart';
+import 'package:learn/components/gradient_button.dart';
 
 
 
@@ -142,7 +142,7 @@ class LoginChildPageState extends State<LoginChildPage> {
                     ),
                   ),
                   const SizedBox(height: 54.0),
-                  LoginEnterButton(
+                  CoinnyGradientButton(
                       onPressed: () async {
                         String childrenCode = values.join();
                         try {

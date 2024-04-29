@@ -10,17 +10,18 @@ class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? backButtonFunction;
   final Gradient? gradient;
   final Widget? superWidget;
+  final String? pageTitle;
 
-  LearnAppBar({
-    this.child,
-    this.pageIndex = 0,
-    this.pagePosition = 0,
-    this.alignment,
-    this.padding,
-    this.backButtonFunction,
-    this.gradient,
-    this.superWidget,
-  });
+  LearnAppBar(
+      {this.child,
+      this.pageIndex = 0,
+      this.pagePosition = 0,
+      this.alignment,
+      this.padding,
+      this.backButtonFunction,
+      this.gradient,
+      this.superWidget,
+      this.pageTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -55,22 +56,32 @@ class LearnAppBar extends StatelessWidget implements PreferredSizeWidget {
                     alignment: alignment, padding: padding, child: child),
               ),
             ),
-            if (backButtonFunction != null)
-              Container(
+            if (backButtonFunction != null || pageTitle != null)
+              Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-                  child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: const Color(0xFFFFFFFF),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.black),
-                        onPressed: backButtonFunction,
-                        iconSize: 24,
-                      ))),
-            //Container(alignment: alignment, padding: padding, child: child),
+                  child: Stack(children: [
+                    if(pageTitle != null)
+                      Center(
+                        child: CoinnyText(
+                          pageTitle as String,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFFFFFF),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: IconButton(
+                          icon:
+                              const Icon(Icons.arrow_back, color: Colors.black),
+                          onPressed: backButtonFunction,
+                          iconSize: 24,
+                        ))
+                  ])),
             if (superWidget != null)
               Positioned(top: 200, left: 16, right: 16, child: superWidget!)
           ],

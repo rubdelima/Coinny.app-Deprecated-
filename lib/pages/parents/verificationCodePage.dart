@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/login/loginEnterButton.dart';
+import 'package:learn/components/gradient_button.dart';
 import 'package:learn/components/boxed_number.dart';
 
 class VerificationCodePage extends StatelessWidget {
@@ -49,7 +49,7 @@ class VerificationCodePage extends StatelessWidget {
             children: childrenCode.map((e) => BoxedNumber(e)).toList(),
           ),
           const SizedBox(height: 64),
-          LoginEnterButton(
+          CoinnyGradientButton(
             title: "Voltar ao início",
             onPressed: () {
               Navigator.pop(context);

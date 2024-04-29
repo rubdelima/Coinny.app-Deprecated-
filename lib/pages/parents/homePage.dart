@@ -8,10 +8,10 @@ import 'package:learn/widgets/notifications/showSugestion.dart';
 import 'package:learn/widgets/monitoring/monitoramento.dart';
 import 'package:provider/provider.dart';
 
-class ParentsHPage extends StatelessWidget {
+class ParentsHome extends StatelessWidget {
   final ValueNotifier<double> pagePosition;
 
-  ParentsHPage({
+  ParentsHome({
     required this.pagePosition,
   });
 
@@ -45,10 +45,10 @@ class ParentsHPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ActivitiesSugestionPage(
-                                  children: parent.value.dependents["1111"]!)));
+                                  children: parent.value.dependents.values.first)));
                     },
                     width: MediaQuery.sizeOf(context).width - 32,
-                    childName: parent.value.dependents["1111"]!.name,
+                    childName: parent.value.dependents.values.first.name,
                     activitieName: "Orçamento de um passeio no Shopping"),
                 const SizedBox(
                   height: 32,

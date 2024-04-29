@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class LoginEnterButton extends StatelessWidget {
+class CoinnyGradientButton extends StatelessWidget {
   final Function onPressed;
   final String title;
   final List<Color> colors;
   final Color fontColor;
 
-  LoginEnterButton({
+  CoinnyGradientButton({
     required this.onPressed,
     required this.title,
     this.colors = const [Color(0xFF646AE3), Color(0xFF262B91)],

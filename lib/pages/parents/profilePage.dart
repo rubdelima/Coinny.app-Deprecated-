@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:learn/components/user_profile.dart';
-import '../../widgets/global/app_bar.dart';
+import 'package:learn/components.dart';
+import 'package:learn/widgets.dart';
+
+
 import 'package:learn/widgets/monitoring/monitoramento.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/pages/parents/addDependentPage.dart';
+import 'package:learn/pages/parents/edit_dependent.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -27,8 +29,7 @@ class ProfilePage extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            padding: const EdgeInsets.fromLTRB(16, 40, 16, 32),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
             child: Column(children: [
               const Text(
                 'Meu perfil',
@@ -45,6 +46,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ]),
           )),
+      
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
@@ -87,7 +89,8 @@ class ProfilePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddDependentPage(parent : parent)));
+                              builder: (context) =>
+                                  AddDependentPage(parent: parent)));
                     },
                     child: Container(
                         padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
@@ -128,7 +131,8 @@ class ProfilePage extends StatelessWidget {
               height: 16,
             ),
             Column(
-              children: parent.value.dependents.values.toList()
+              children: parent.value.dependents.values
+                  .toList()
                   .map((child) => ChildMonitoringBox(
                         child: child,
                       ))

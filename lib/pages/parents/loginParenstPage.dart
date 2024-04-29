@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/login/loginEnterButton.dart';
+import 'package:learn/components/gradient_button.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
 import 'package:learn/classes.dart';
@@ -121,7 +121,7 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                     passwordController: _passwordController,
                   ),
                   const SizedBox(height: 32),
-                  LoginEnterButton(
+                  CoinnyGradientButton(
                       onPressed: () async {
                         try {
                           final credential = await FirebaseAuth.instance

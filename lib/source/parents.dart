@@ -51,7 +51,7 @@ class _ParentsMainState extends State<ParentsMain> {
     final parent = ModalRoute.of(context)?.settings.arguments as Parents;
 
     List<Widget> _pageOptions = [
-      ParentsHPage(pagePosition: pagePosition,),
+      ParentsHome(pagePosition: pagePosition,),
       MonitoringPage(pagePosition: pagePosition),
       ProfilePage(pagePosition: pagePosition,pageController: _pageController,)
     ];
