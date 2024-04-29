@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,18 +24,39 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
-          title: 'Coinny',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
-          home: LoginPage(),
-          routes: {
-            '/parentsMain': (context) => ParentsMain(),
-            '/childrenMain': (context) => ChildrenMain(),
-            '/signUpParents': (context) => SignParentsPage(),
-            '/lession01' :(context) => Lession01Main()
-          },
-        );
+      title: 'Coinny',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: AuthenticationChecker(),
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/parentsMain': (context) => ParentsMain(),
+        '/childrenMain': (context) => ChildrenMain(),
+        '/signUpParents': (context) => SignParentsPage(),
+        '/lession01': (context) => Lession01Main()
+      },
+    );
+  }
+}
+
+class AuthenticationChecker extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+
+    if (currentUser != null) {
+      // Debug, aqui vemos que o estado está sendo salvo
+      print('User Name: ${currentUser.displayName}');
+      print('User Email: ${currentUser.email}');
+
+      // não estou passando a page inicial, mas sim a página de login, debug
+      return LoginPage();
+      // basta tentar resolver o constutor de ParentsMain
+      //return ParentsMain();
+    } else {
+      return LoginPage();
+    }
   }
 }

@@ -137,6 +137,7 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                             Navigator.pushReplacementNamed(
                                 context, '/parentsMain',
                                 arguments: parentUser);
+                                print('Parent user is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA $parentUser');
                           }
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {

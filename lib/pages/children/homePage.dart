@@ -7,6 +7,7 @@ import 'package:learn/widgets.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/utils/activitiesList.dart';
 import 'package:provider/provider.dart';
+import 'package:learn/widgets/login/LogoutButton.dart';
 
 
 class ChildrenHomePage extends StatelessWidget {
@@ -74,7 +75,8 @@ class ChildrenHomePage extends StatelessWidget {
             AchievementsWidget(
               childAcheivments: child.value.acheivments,
             ),
-            const SizedBox(height: 80,)
+            const SizedBox(height: 80,),
+            LogoutButton(),
           ],
         ),
       ),
