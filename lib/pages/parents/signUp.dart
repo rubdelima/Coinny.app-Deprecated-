@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn/components/gradient_button.dart';
-import 'package:learn/widgets/login/loginAppBar.dart';
-import 'package:learn/widgets/login/loginInfoContainter.dart';
+import 'package:learn/components/login_app_bar.dart';
+import 'package:learn/components/login_info_containter.dart';
 
 class LoginInputFields extends StatelessWidget {
   final TextEditingController emailController;

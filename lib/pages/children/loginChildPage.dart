@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/widgets/login/loginAppBar.dart';
+import 'package:learn/components/login_app_bar.dart';
 import 'package:learn/components/gradient_button.dart';
 
 
