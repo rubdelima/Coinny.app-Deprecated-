@@ -23,6 +23,9 @@ export 'package:learn/widgets/activities/lessionCard.dart';
 // Monitoring
 export 'package:learn/widgets/monitoring/monitoramento.dart';
 export 'package:learn/widgets/monitoring/monitoring_lesson.dart';
+export 'package:learn/widgets/monitoring/childrenMonitoringGraph.dart';
+export 'package:learn/widgets/monitoring/childrenMonitoringSelector.dart';
+export 'package:learn/widgets/monitoring/perfomance_report.dart';
 
 // Conquists
 export 'package:learn/widgets/conquists/achivievementWidget.dart';

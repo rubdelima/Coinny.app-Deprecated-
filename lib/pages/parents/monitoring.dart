@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/global/app_bar.dart';
 import 'package:learn/classes.dart';
-import 'package:learn/widgets/monitoring/childrenMonitoringGraph.dart';
-import 'package:learn/widgets/monitoring/childrenMonitoringSelector.dart';
+import 'package:learn/widgets.dart';
 import 'package:provider/provider.dart';
-
 
 class MonitoringPage extends StatefulWidget {
   final ValueNotifier<double> pagePosition;
@@ -55,8 +52,8 @@ class _MonitoringPageState extends State<MonitoringPage> {
                       fontFamily: 'Fieldwork-Geo',
                     )))),
       ),
+      
       body: SingleChildScrollView(
-        
         child:Container(
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.fromLTRB(16, 32, 16, 0),
@@ -67,18 +64,20 @@ class _MonitoringPageState extends State<MonitoringPage> {
             scrollDirection: Axis.horizontal,
             child: Row(
             children: [
+              /// Todas as crianças
               ChildSelect(
                 isSelected: selectedChild == null,
                 onTap: () => _onChildTap(null),
                 child: null,
               ),
+
+              /// Um map para cada uma das crianças
               ...parent.value.dependents.values.toList()
                   .map((child) => ChildSelect(
                         isSelected: selectedChild == child,
                         onTap: () => _onChildTap(child),
                         child: child,
-                      ))
-                  .toList(),
+                      )),
             ],
           ),),
           const SizedBox(height: 16,),
@@ -104,29 +103,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
           ),
           ),
           const SizedBox(height: 16,),
-          const Text("Relatório de desempenho", style: TextStyle(fontFamily: "Fieldwork-Geo", color: Color(0xFF000000), fontWeight: FontWeight.bold,fontSize: 14),),
-          const Text("Gere um relatório de desempenho de todos os seus dependentes.", style: TextStyle(fontFamily: "Fieldwork-Geo", color: Color(0xFF5c5c5c),fontSize: 12),),
-          const SizedBox(height: 8,),
-          Container(
-            height: 119,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color:  const Color(0xFFA2A2A2).withOpacity(0.6),
-              borderRadius: BorderRadius.circular(20),
-              boxShadow:  [BoxShadow(
-                color: Color(0xFF5C5C5C).withOpacity(0.3),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset:  Offset(1, 1),
-              )]
-            ),
-            child: Center(
-                  child: Image.asset(
-                "assets/images/appIcons/icon-lock-default.png",
-                height: 119 * 0.25)
-            )
-          ),
-
+          const PerformanceReportWidget(),
           const SizedBox(height: 120,)
         ],
       ),
