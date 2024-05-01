@@ -7,3 +7,4 @@ export 'package:learn/components/gradient_button.dart';
 export 'package:learn/components/text_input.dart';
 export 'package:learn/components/login_app_bar.dart';
 export 'package:learn/components/login_info_containter.dart';
+export 'package:learn/components/widget_title.dart';

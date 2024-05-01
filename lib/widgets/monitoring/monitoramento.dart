@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/child_overview.dart';
-import 'package:learn/classes.dart';
 import 'package:learn/utils.dart';
 class MonitoringWidget extends StatelessWidget {
   final Parents parent;

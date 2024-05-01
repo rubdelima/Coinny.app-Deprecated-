@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:learn/pages/parents/home.dart';
-import 'package:learn/widgets.dart';
-import '../pages/parents/profilePage.dart';
-import '../pages/parents/monitoringPage.dart';
-import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
+
+import 'package:learn/widgets.dart';
+import 'package:learn/classes.dart';
+
+import 'package:learn/pages/parents/home.dart';
+import 'package:learn/pages/parents/profile.dart';
+import 'package:learn/pages/parents/monitoring.dart';
 
 class ParentsMain extends StatefulWidget {
   @override
