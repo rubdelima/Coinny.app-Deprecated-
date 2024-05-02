@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/global/nav_bar.dart';
-import '../pages/children/homePage.dart';
-import '../pages/children/activitiesPage.dart';
-import '../pages/children/MascotPage.dart';
+import 'package:learn/widgets/global/nav_bar.dart';
+import 'package:learn/pages/children/home.dart';
+import 'package:learn/pages/children/activities.dart';
+import 'package:learn/pages/children/connie.dart';
 import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
 

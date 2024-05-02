@@ -4,7 +4,7 @@ import 'package:learn/components/boxed_number.dart';
 
 class VerificationCodePage extends StatelessWidget {
   final String childrenName;
-  final List<int> childrenCode; // Change this line
+  final List<int> childrenCode;
   const VerificationCodePage(
       {required this.childrenName, required this.childrenCode});
 

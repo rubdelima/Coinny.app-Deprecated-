@@ -59,7 +59,7 @@ class Authenticator extends StatelessWidget {
               Future.microtask(() => Navigator.pushReplacementNamed(
                   context, '/parentsMain',
                   arguments: snapshot.data));
-              return CircularProgressIndicator();
+              return const Scaffold(body: Center(child: CircularProgressIndicator()));
             }
             if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');

@@ -5,7 +5,7 @@ import 'package:learn/utils.dart';
 import 'package:learn/widgets.dart';
 import 'package:learn/components.dart';
 
-import 'package:learn/pages/parents/verificationCodePage.dart';
+import 'package:learn/pages/parents/verification_code.dart';
 
 class AddDependentPage extends StatefulWidget {
   final VolatileParents parent;
