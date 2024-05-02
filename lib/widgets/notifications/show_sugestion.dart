@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:learn/classes.dart";
-import 'package:learn/pages/parents/sugestionPage.dart';
+import 'package:learn/pages/parents/sugestion.dart';
 
 class ShowSugestion extends StatelessWidget {
   final double width;

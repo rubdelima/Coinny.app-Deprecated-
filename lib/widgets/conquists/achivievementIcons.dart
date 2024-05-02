@@ -31,22 +31,28 @@ class AchievementIcon extends StatelessWidget {
             width: width,
             height: heigth,
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: data.colors,
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius:
-                    BorderRadius.circular(12.5), // Arredondamento das bordas
-                ),
+              gradient: LinearGradient(
+                colors: isLocked? [Colors.grey, Colors.grey] : data.colors,
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius:
+                  BorderRadius.circular(12.5), // Arredondamento das bordas
+            ),
             child: Stack(
               children: [
                 Center(
                     child: Container(
-                  padding: EdgeInsets.all(16.0),
-                  child: Image.asset(
-                    data.imagePath,
-                    height: heigth,
+                  padding: const EdgeInsets.all(16.0),
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      isLocked ? Colors.grey : Colors.transparent,
+                      BlendMode.saturation,
+                    ),
+                    child: Image.asset(
+                      data.imagePath,
+                      height: heigth,
+                    ),
                   ),
                 )),
                 Positioned(

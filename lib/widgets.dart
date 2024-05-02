@@ -11,9 +11,8 @@ export 'package:learn/widgets/settings/selectedGoals.dart';
 export 'package:learn/widgets/settings/childrenDataBox.dart';
 export 'package:learn/widgets/settings/profile_title.dart';
 
-
 // Notifications
-export 'package:learn/widgets/notifications/showSugestion.dart';
+export 'package:learn/widgets/notifications/show_sugestion.dart';
 
 // Activities and Lessons
 export 'package:learn/widgets/activities/activitieCardAnimated.dart';
@@ -31,3 +30,13 @@ export 'package:learn/widgets/monitoring/perfomance_report.dart';
 
 // Conquists
 export 'package:learn/widgets/conquists/achivievementWidget.dart';
+export 'package:learn/widgets/conquists/achivievementIcons.dart';
+
+// Mascot
+export 'package:learn/widgets/mascot/mascote.dart';
+export 'package:learn/widgets/mascot/mascotBar.dart';
+export 'package:learn/widgets/mascot/mascotSideBar.dart';
+
+// Login
+export "package:learn/widgets/login/BoxSelectorLogin.dart";
+export "package:learn/widgets/login/children_access.dart";

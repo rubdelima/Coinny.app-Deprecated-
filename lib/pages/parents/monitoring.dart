@@ -29,27 +29,11 @@ class _MonitoringPageState extends State<MonitoringPage> {
         appBar: LearnAppBar(
           pageIndex: 2,
           pagePosition: widget.pagePosition.value,
-          child: Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.fromLTRB(14, 48, 14, 0),
-              child: RichText(
-                  text: const TextSpan(
-                      children: [
-                    TextSpan(
-                      text: 'Monitoramento\n\n',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
-                    ),
-                    TextSpan(
-                        text:
-                            "Acompanhe o desempenho dos seus filhos em tempo real, visualize suas conquistas e comemorem juntos!",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 13))
-                  ],
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Fieldwork-Geo',
-                      )))),
+          child: const CoinnyTitleSubTitlePage(
+            title: 'Monitoramento',
+            subTitle:
+                "Acompanhe o desempenho dos seus filhos em tempo real, visualize suas conquistas e comemorem juntos!",
+          ),
         ),
         body: SingleChildScrollView(
           child: Container(
