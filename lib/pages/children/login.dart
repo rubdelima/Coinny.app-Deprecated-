@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn/classes.dart';
 import 'package:learn/components.dart';
-import 'package:learn/utils/fonts.dart';
 import "package:learn/widgets.dart";
+import "package:learn/utils.dart";
 
 class LoginChildPage extends StatefulWidget {
   const LoginChildPage({Key? key}) : super(key: key);
@@ -54,6 +53,7 @@ class LoginChildPageState extends State<LoginChildPage> {
   Future<void> childrenLogin() async {
     String childrenCode = values.join();
     try {
+      savePersonToken(childrenCode);
       Children userChild = await loadChildren(childrenCode);
       Navigator.pushReplacementNamed(context, '/childrenMain',
           arguments: userChild);

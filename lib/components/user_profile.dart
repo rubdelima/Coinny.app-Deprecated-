@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/components/streak.dart';
+import 'package:learn/utils.dart';
 
 class UserPhotoAndName extends StatelessWidget {
   final Person person;
@@ -53,19 +54,21 @@ class UserPhotoAndName extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        person is Children ?
-            isSugestion
+        person is Children
+            ? isSugestion
                 ? child!.getShield()
                 : StreakWidget(child: person as Children)
-              : const SizedBox(),
-        if(logout)
+            : const SizedBox(),
+        if (logout)
           IconButton(
-                  onPressed: () =>
-                      Navigator.pushReplacementNamed(context, '/login'),
-                  icon: const Icon(
-                    Icons.logout,
-                    color: Colors.white,
-                  ))
+              onPressed: () {
+                clearLocalPerson();
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              icon: const Icon(
+                Icons.logout,
+                color: Colors.white,
+              ))
       ],
     );
   }

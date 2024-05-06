@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn/components.dart';
-import 'package:learn/classes.dart';
+import "package:learn/utils.dart";
 
 class LoginParentsPage extends StatefulWidget {
   @override
@@ -30,6 +30,7 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
 
       if (parent != null) {
         Parents parentUser = await loadParent(parent.email ?? "");
+        savePersonToken(parentUser.email);
         Navigator.pushReplacementNamed(context, '/parentsMain',
             arguments: parentUser);
       }
