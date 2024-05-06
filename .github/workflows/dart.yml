@@ -1,11 +1,11 @@
-name: app-coinny
+name: app-coinny-release
 
 on:
   workflow_dispatch:
 
 jobs:
   build-ios:
-    name: Coinny
+    name: Coinny-IOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -40,3 +40,25 @@ jobs:
           tag: v1.0
           overwrite: true
           body: "This is first release"
+  build-android:
+    name: Coinny-APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          architecture: x64
+      - run: flutter pub get
+
+      - run: flutter build apk --release
+
+      - name: Upload Android binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/app/outputs/flutter-apk/app-release.apk
+          tag: v1.0
+          overwrite: true
+          body: "Android release"
