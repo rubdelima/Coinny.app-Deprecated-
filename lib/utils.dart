@@ -4,6 +4,7 @@ export 'package:learn/utils/lessions.dart';
 export 'package:learn/utils/settings.dart';
 export 'package:learn/classes.dart';
 export 'package:learn/utils/acheiviementsList.dart';
+export 'package:learn/utils/login_functions.dart';
 
 int diffYears(DateTime birthDate) {
   DateTime now = DateTime.now();

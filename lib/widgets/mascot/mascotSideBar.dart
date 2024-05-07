@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:learn/widgets/mascot/mascotSideBarIcon.dart';
-import 'package:learn/classes.dart';
+import 'package:learn/utils.dart';
 import 'package:provider/provider.dart';
 
 class MascotSideBar extends StatelessWidget {
@@ -40,7 +40,9 @@ class MascotSideBar extends StatelessWidget {
           MascotSideBarIcon(name:"Alimentos", onPressed: () {children.addPontuation(200);}),
           MascotSideBarIcon(name:"Atividades", onPressed: (){children.value.update();},),
           MascotSideBarIcon(name:"Roupas", onPressed: (){
-              try{loadChildren(children.value.childrenCode);
+              try{
+                clearLocalPerson();
+                Navigator.pushReplacementNamed(context, '/login');
               }catch(e) {print(e);}
           },),
         ],

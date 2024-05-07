@@ -1,8 +1,8 @@
 {
-    "name": "learn",
-    "short_name": "learn",
+    "name": "Coinny",
+    "short_name": "Coinny",
     "start_url": ".",
-    "display": "standalone",
+    "display": "portrait",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
     "description": "A new Flutter project.",
@@ -10,24 +10,24 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
-            "sizes": "192x192",
+            "src": "icons/180.png",
+            "sizes": "180x180",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-512.png",
-            "sizes": "512x512",
+            "src": "icons/1024.png",
+            "sizes": "1024x1024",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-maskable-192.png",
-            "sizes": "192x192",
+            "src": "icons/180.png",
+            "sizes": "180x180",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "icons/Icon-maskable-512.png",
-            "sizes": "512x512",
+            "src": "icons/1024.png",
+            "sizes": "1024x1024",
             "type": "image/png",
             "purpose": "maskable"
         }

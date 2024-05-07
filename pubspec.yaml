@@ -40,6 +40,7 @@ dependencies:
   cloud_firestore: ^4.15.8
   rive: ^0.13.1
   shared_preferences: ^2.0.8
+  flutter_secure_storage: ^9.0.0
 
 dev_dependencies:
   flutter_test:
