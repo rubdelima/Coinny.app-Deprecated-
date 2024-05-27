@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/login.dart';
-import 'package:learn/widgets/login/BoxSelectorLogin.dart';
 import 'children/login.dart';
 
 import 'package:learn/components.dart';

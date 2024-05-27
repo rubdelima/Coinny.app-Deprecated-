@@ -23,7 +23,7 @@ class ChildrenAccessInput extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(24.0),
                 border: Border.all(
                   color: Colors.grey.shade300,
                   width: 2,

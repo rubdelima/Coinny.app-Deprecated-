@@ -9,3 +9,6 @@ export 'package:learn/components/login_app_bar.dart';
 export 'package:learn/components/login_info_containter.dart';
 export 'package:learn/components/widget_title.dart';
 export 'package:learn/components/title_page.dart';
+export 'package:learn/widgets/login/BoxSelectorLogin.dart';
+export 'package:learn/components/login_title.dart';
+export 'package:learn/components/profile_selector.dart';

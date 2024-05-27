@@ -5,10 +5,14 @@ class CoinnyGradientButton extends StatelessWidget {
   final String title;
   final List<Color> colors;
   final Color fontColor;
+  final double width;
+  final double height;
 
   CoinnyGradientButton({
     required this.onPressed,
     required this.title,
+    this.width =210,
+    this.height= 50,
     this.colors = const [Color(0xFF646AE3), Color(0xFF262B91)],
     this.fontColor = const Color(0xFFFFFFFF)
   });
@@ -17,8 +21,8 @@ class CoinnyGradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 210,
-      height: 50,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         gradient: LinearGradient(
