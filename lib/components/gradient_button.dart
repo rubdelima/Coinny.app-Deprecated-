@@ -17,8 +17,8 @@ class CoinnyGradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 210,
-      height: 50,
+      width: 358,
+      height: 54,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         gradient: LinearGradient(
