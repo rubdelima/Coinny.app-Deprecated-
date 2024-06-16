@@ -22,85 +22,67 @@ class LoginInputFields extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 48,
+          height: 54,
           child: TextField(
             controller: nameController,
             style: const TextStyle(
                 fontFamily: "Fieldwork-Geo",
                 fontWeight: FontWeight.w400,
-                color: Color(0xff5A5A5A),
+                color: Color(0xffffffff),
                 fontSize: 12),
             decoration: InputDecoration(
               labelStyle: const TextStyle(
                   fontFamily: "Fieldwork-Geo",
                   fontWeight: FontWeight.w400,
-                  color: Color(0xff9A9A9A),
+                  color: Color(0xffCDCDCD),
                   fontSize: 12),
               labelText: 'Nome',
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: Color(0xff7A7FFF),
-                ),
-              ),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(46)),
             ),
             keyboardType: TextInputType.emailAddress,
           )),
         const SizedBox(height: 16),
         SizedBox(
-            height: 48,
+            height: 54,
             child: TextField(
               controller: emailController,
               style: const TextStyle(
                   fontFamily: "Fieldwork-Geo",
                   fontWeight: FontWeight.w400,
-                  color: Color(0xff5A5A5A),
+                  color: Color(0xffffffff),
                   fontSize: 12),
               decoration: InputDecoration(
                 labelStyle: const TextStyle(
                     fontFamily: "Fieldwork-Geo",
                     fontWeight: FontWeight.w400,
-                    color: Color(0xff9A9A9A),
+                    color: Color(0xffCDCDCD),
                     fontSize: 12),
-                labelText: 'Email',
+                labelText: 'E-mail',
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Color(0xff7A7FFF),
-                  ),
-                ),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(46)),
               ),
               keyboardType: TextInputType.emailAddress,
             )),
         const SizedBox(height: 16),
         SizedBox(
-          height: 48,
+          height: 54,
           child: TextField(
             controller: passwordController,
             style: const TextStyle(
                 fontFamily: "Fieldwork-Geo",
                 fontWeight: FontWeight.w400,
-                color: Color(0xff5A5A5A),
+                color: Color(0xffffffff),
                 fontSize: 12),
             decoration: InputDecoration(
               labelStyle: const TextStyle(
                   fontFamily: "Fieldwork-Geo",
                   fontWeight: FontWeight.w400,
-                  color: Color(0xff9A9A9A),
+                  color: Color(0xffCDCDCD),
                   fontSize: 12),
               labelText: 'Senha',
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: Color(0xff7A7FFF),
-                ),
-              ),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(46)),
             ),
             obscureText: true,
           ),
@@ -170,22 +152,25 @@ class _SignParentsPageState extends State<SignParentsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(50.0),
-      child: Column(children: <Widget>[
+      backgroundColor: const Color(0xFF1A1D78),
+      body: Padding(
+      padding: const EdgeInsets.fromLTRB(16, 64, 16, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.04,
         ),
-        const LoginAppBar(),
         Expanded(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const LoginInfoContainer(
-                  title: "Bem-vindo à Coinny",
+                  title: "Cadastre-se\n",
+                  bold1: true,
+                  boldTitle: "na Coinny!",
                   description:
-                      "Para iniciar sua sessão, insira suas credenciais de login."),
-              const SizedBox(height: 32),
+                      "Insira suas credenciais abaixo para finalizar o seu cadastro."),
+              const SizedBox(height: 48),
               LoginInputFields(
                 emailController: _emailController,
                 passwordController: _passwordController,

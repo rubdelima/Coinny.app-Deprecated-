@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:learn/pages/parents/loginParenstPage.dart';
 import 'package:learn/widgets/login/BoxSelectorLogin.dart';
@@ -33,7 +34,8 @@ class _LoginPageState extends State<LoginPage> {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: const LoginInfoContainer(
-                title: "Bem-vindo\nà Coinny",
+                title: "Bem-vindo\nà ",
+                boldTitle: "Coinny",
                 description:
                     "Para inicar sua sessão, selecione o seu tipo de perfil na Coinny!"),
             ),
@@ -58,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 128),
             CoinnyGradientButton(
-                onPressed: () {
+                onPressed: (userType == 'responsável' || userType == 'aprendiz') ? () {
                   if (userType == 'aprendiz') {
                     Navigator.pushReplacement(
                       context,
@@ -74,16 +76,17 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     );
                   }
-                },
+                } :
+                (){},
                 title: "Continuar",
                 colors: (userType == 'responsável' || userType == 'aprendiz') ? [const Color(0xFF646AE3), const Color(0xFF262B91)] : [const Color(0xFFB6B6B6), const Color(0xFFB6B6B6)],
             ),
             const SizedBox(height: 32),
             RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 text: 'Ainda não é cadastrado? ',
-                style: TextStyle(
-                  fontSize: 12,
+                style: const TextStyle(
+                  fontSize: 14,
                   color: Color(0xFF060C20),
                   fontFamily: "Fieldwork-Geo",
                   fontWeight: FontWeight.w400,
@@ -91,9 +94,14 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   TextSpan(
                     text: 'Cadastre-se',
-                    style: TextStyle(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushNamed(context, '/signUp');
+                      },
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF646AE3),
+                    
                     ),
                   ),
                 ],

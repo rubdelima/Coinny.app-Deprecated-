@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 class LoginInfoContainer extends StatelessWidget {
   final String title;
+  final String boldTitle;
   final String description;
+  final bool bold1;
 
   const LoginInfoContainer({
     required this.title,
+    required this.boldTitle,
     required this.description,
+    this.bold1 = false,
     super.key,
   });
 
@@ -16,19 +20,19 @@ class LoginInfoContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RichText(
-          text: const TextSpan(
-            text: 'Bem-vindo\nà',
+          text: TextSpan(
+            text: title,
             style: TextStyle(
               fontSize: 32,
-              color: Color(0xFF060C20),
+              color: bold1 ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
               fontFamily: "Fieldwork-Geo",
-              fontWeight: FontWeight.w600,
+              fontWeight: bold1 ? FontWeight.w900: FontWeight.w600,
             ),
             children: [
               TextSpan(
-                text: ' Coinny',
+                text: boldTitle,
                 style: TextStyle(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: bold1 ? FontWeight.w600 : FontWeight.w900,
                 ),
               ),      
             ],
@@ -38,9 +42,9 @@ class LoginInfoContainer extends StatelessWidget {
         Text(
           description,
           textAlign: TextAlign.left,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: Color(0xFF060C20),
+            color: bold1 ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
             fontFamily: "Fieldwork-Geo",
             fontWeight: FontWeight.w400,
           )
