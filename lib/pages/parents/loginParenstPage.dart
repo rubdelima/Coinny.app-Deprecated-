@@ -1,9 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/widgets.dart';
 import 'package:learn/components/gradient_button.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
 import 'package:learn/classes.dart';
+import 'package:learn/components/newBack_button.dart';
+import 'package:learn/pages/loginPage.dart';
 
 class LoginInputFields extends StatelessWidget {
   final TextEditingController emailController;
@@ -17,12 +21,35 @@ class LoginInputFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-            height: 48,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+              height: 54,
+              child: TextField(
+                controller: emailController,
+                style: const TextStyle(
+                    fontFamily: "Fieldwork-Geo",
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff5A5A5A),
+                    fontSize: 13),
+                decoration: InputDecoration(
+                  labelStyle: const TextStyle(
+                      fontFamily: "Fieldwork-Geo",
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff9A9A9A),
+                      fontSize: 13),
+                  labelText: 'E-mail',
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(46)),
+                ),
+                keyboardType: TextInputType.emailAddress,
+              )),
+          const SizedBox(height: 16),
+          SizedBox(
+            height: 54,
             child: TextField(
-              controller: emailController,
+              controller: passwordController,
               style: const TextStyle(
                   fontFamily: "Fieldwork-Geo",
                   fontWeight: FontWeight.w400,
@@ -34,48 +61,15 @@ class LoginInputFields extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: Color(0xff9A9A9A),
                     fontSize: 13),
-                labelText: 'Email',
+                labelText: 'Senha',
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(
-                    color: Color(0xff7A7FFF),
-                  ),
-                ),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(46)),
               ),
-              keyboardType: TextInputType.emailAddress,
-            )),
-        const SizedBox(height: 16),
-        SizedBox(
-          height: 48,
-          child: TextField(
-            controller: passwordController,
-            style: const TextStyle(
-                fontFamily: "Fieldwork-Geo",
-                fontWeight: FontWeight.w400,
-                color: Color(0xff5A5A5A),
-                fontSize: 13),
-            decoration: InputDecoration(
-              labelStyle: const TextStyle(
-                  fontFamily: "Fieldwork-Geo",
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xff9A9A9A),
-                  fontSize: 13),
-              labelText: 'Senha',
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(
-                  color: Color(0xff7A7FFF),
-                ),
-              ),
+              obscureText: true,
             ),
-            obscureText: true,
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }
@@ -99,28 +93,51 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(50.0),
-        child: Column(
+      body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.06,
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: CoinnyBackButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context, 
+                    MaterialPageRoute(builder: (context) => LoginPage()
+                    )
+                  );
+                }
+              ),
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.04,
             ),
-            const LoginAppBar(),
-            Expanded(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16), 
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   const LoginInfoContainer(
-                      title: "Bem-vindo à Coinny",
+                      title: "Seja ",
+                      boldTitle: "bem-vindo\nde volta!",
                       description:
-                          "Para iniciar sua sessão, insira suas credenciais de login."),
+                          "Insira suas credenciais para acessar o aplicativo da Coinny."),
                   const SizedBox(height: 32),
                   LoginInputFields(
                     emailController: _emailController,
                     passwordController: _passwordController,
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Esqueci minha senha',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      decoration: TextDecoration.underline
+                    ),
+                  ),
+                  const SizedBox(height: 64),
                   CoinnyGradientButton(
                       onPressed: () async {
                         try {
@@ -160,12 +177,39 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                       },
                       title: "Entrar",
                       colors: const [Color(0xFF646AE3), Color(0xFF262B91)]),
+                      const SizedBox(height: 32),
+                      Center(
+                        child: RichText(
+                        text: TextSpan(
+                          text: 'Ainda não é cadastrado? ',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF060C20),
+                            fontFamily: "Fieldwork-Geo",
+                            fontWeight: FontWeight.w400,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Cadastre-se',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.pushNamed(context, '/signUp');
+                                },
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF646AE3),
+                              
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      )
                 ],
               ),
             ),
           ],
         ),
-      ),
     );
   }
 }

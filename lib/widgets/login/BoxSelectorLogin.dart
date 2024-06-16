@@ -18,10 +18,12 @@ class CustomRadioTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.91, vertical: 12),
+        width: 169,
+        height: 196,
         decoration: BoxDecoration(
           color:
               isSelected ? const Color.fromARGB(255, 255, 255, 255) : Colors.white, // Highlight color
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(25),
           border: Border.all(
             color: isSelected ? const Color(0xFF5B61D7) : const Color(0xFFB6B6B6), // Highlight color
             width: 0.75,
@@ -35,11 +37,16 @@ class CustomRadioTile extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            isSelected ? const Icon(Icons.check_circle, color:  Color(0xFF5B61D7)) :
-                         const Icon(Icons.radio_button_unchecked, color: Color(0xFFB6B6B6)),
-            const SizedBox(width: 18.2),
+            Image.asset(
+              (title == 'Sou um\nresponsável') ? 'assets/gifs/login_glasses.png' : 'assets/gifs/login_pig.png', 
+              height: 84, 
+              width: 84, 
+              color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
+            ),  
+            const Spacer(),
             Expanded(
               child: Text(
                 title, 
@@ -47,7 +54,7 @@ class CustomRadioTile extends StatelessWidget {
                   fontSize: 14,
                   fontFamily: "Fieldwork-Geo",
                   fontWeight: FontWeight.w400,
-                  color: isSelected ? const Color(0xFF3C3C3C) : const Color(0xFFB6B6B6)
+                  color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
                   )
                 )
               ),

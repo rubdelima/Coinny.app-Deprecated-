@@ -155,6 +155,12 @@ flutter:
   # Animations
   - ./assets/animations/coinny.riv
 
+  # GIFS
+  - ./assets/gifs/loading_coins.png
+  - ./assets/gifs/loading_joystick.png
+  - ./assets/gifs/login_glasses.png
+  - ./assets/gifs/login_pig.png
+
 
   fonts:
     - family: Fieldwork-Geo
