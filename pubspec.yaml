@@ -207,6 +207,27 @@ flutter:
         - asset: assets/fonts/Fieldwork/Fieldwork8HumLight.otf
           weight: 300
 
+    - family: Spartan
+      fonts:
+        - asset: assets/fonts/Spartan/Spartan-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Spartan/Spartan-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Spartan/Spartan-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Spartan/Spartan-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Spartan/Spartan-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Spartan/Spartan-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Spartan/Spartan-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Spartan/Spartan-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Spartan/Spartan-SemiBold.ttf
+          weight: 600
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
