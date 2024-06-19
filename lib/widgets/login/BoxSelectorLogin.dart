@@ -41,23 +41,35 @@ class CustomRadioTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              (title == 'Sou um\nresponsável') ? 'assets/gifs/login_glasses.png' : 'assets/gifs/login_pig.png', 
+              (title == 'Sou um\nresponsável') ? 'assets/gifs/login_glasses.gif' : 'assets/gifs/login_pig.gif', 
               height: 84, 
               width: 84, 
               color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
             ),  
             const Spacer(),
             Expanded(
-              child: Text(
-                title, 
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: "Fieldwork-Geo",
-                  fontWeight: FontWeight.w400,
-                  color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${title.split('\n')[0]}\n',
+                    ),
+                    TextSpan(
+                      text: title.split('\n')[1],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                      )
+                    )
+                  ],
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: "Fieldwork-Geo",
+                    fontWeight: FontWeight.w400,
+                    color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
                   )
                 )
-              ),
+              )
+            ),
               
           ],
         ),

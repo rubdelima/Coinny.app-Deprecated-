@@ -92,6 +92,11 @@ flutter:
   - ./assets/images/appIcons/activityIcon2.png
   - ./assets/images/appIcons/activityIcon3.png
   - ./assets/images/appIcons/activityIcon4.png
+  - ./assets/images/appIcons/backArrow.png
+  - ./assets/images/appIcons/password_eye.png
+  - ./assets/images/appIcons/password_eye_off.png
+  - ./assets/images/appIcons/date_calendar.png
+  - ./assets/images/appIcons/right_arrow.png
 
   # Badges
   - ./assets/images/appIcons/badge-bronze-default.png
@@ -102,7 +107,7 @@ flutter:
   - ./assets/images/appIcons/badge-ouro-blue.png
   - ./assets/images/appIcons/badge-diamante-default.png
   - ./assets/images/appIcons/badge-diamante-blue.png
-  - ./assets/images/appIcons/silver-badge.png
+  - ./assets/images/appIcons/silver-badge.png 
   
   # Person Images
   - ./assets/images/appImages/ianzinho.jpg
@@ -156,10 +161,11 @@ flutter:
   - ./assets/animations/coinny.riv
 
   # GIFS
-  - ./assets/gifs/loading_coins.png
-  - ./assets/gifs/loading_joystick.png
-  - ./assets/gifs/login_glasses.png
-  - ./assets/gifs/login_pig.png
+  - ./assets/gifs/loading_coins.gif
+  - ./assets/gifs/loading_joystick.gif
+  - ./assets/gifs/login_glasses.gif
+  - ./assets/gifs/login_pig.gif
+  - ./assets/gifs/confetti.gif
 
 
   fonts:

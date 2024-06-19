@@ -120,8 +120,7 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   const LoginInfoContainer(
-                      title: "Seja ",
-                      boldTitle: "bem-vindo\nde volta!",
+                      title: "Seja bem-vindo\nde volta!",
                       description:
                           "Insira suas credenciais para acessar o aplicativo da Coinny."),
                   const SizedBox(height: 32),
@@ -175,8 +174,8 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                                   'As credenciais informadas não são válidas, tente novamente $error')));
                         }
                       },
-                      title: "Entrar",
-                      colors: const [Color(0xFF646AE3), Color(0xFF262B91)]),
+                      title: "ENTRAR",
+                      color: const Color(0xFF5D61D6)),
                       const SizedBox(height: 32),
                       Center(
                         child: RichText(

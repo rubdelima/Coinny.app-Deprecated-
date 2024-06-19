@@ -157,9 +157,10 @@ class LoginChildPageState extends State<LoginChildPage> {
                         }
                       },
                       title: "Entrar",
-                      colors: values[3] != ''
-                          ? const [Color(0xFF646AE3), Color(0xFF262B91)]
-                          : const [Color(0xff808080), Color(0xff808080)]),
+                      color: values[3] != ''
+                          ? const Color(0xFF5D61D6) 
+                          : const Color(0xff808080)
+                  ),
                 ],
               ),
             ),

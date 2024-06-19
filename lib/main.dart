@@ -3,8 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learn/backend/firebase_options.dart';
+import 'package:learn/pages/signUp.dart';
 import 'pages/loginPage.dart';
-import 'pages/parents/signUp.dart';
+import 'pages/parents/signUpParents.dart';
 import 'source/parents.dart';
 import 'source/children.dart';
 import 'docs/activities/lession01Main.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       home: const Authenticator(),
       routes: {
         // rotas da aplicação
-        '/signUp': (context) => SignParentsPage(),
+        '/signUp': (context) => const SignUp(),
         '/login': (context) => LoginPage(),
         '/parentsMain': (context) => ParentsMain(),
         '/childrenMain': (context) => ChildrenMain(),
