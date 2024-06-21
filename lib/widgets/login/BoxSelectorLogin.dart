@@ -57,20 +57,19 @@ class CustomRadioTile extends StatelessWidget {
                     TextSpan(
                       text: title.split('\n')[1],
                       style: const TextStyle(
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                       )
                     )
                   ],
                   style: TextStyle(
                     fontSize: 14,
-                    fontFamily: "Fieldwork-Geo",
-                    fontWeight: FontWeight.w400,
+                    fontFamily: "Spartan",
+                    fontWeight: FontWeight.w500,
                     color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
                   )
                 )
               )
-            ),
-              
+            ),   
           ],
         ),
       ),

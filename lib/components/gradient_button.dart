@@ -55,10 +55,10 @@ class CoinnyGradientButton extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
                   color: fontColor,
-                  fontFamily: "Fieldwork-Geo"),
+                  fontFamily: "Spartan"),
             )));
   }
 }

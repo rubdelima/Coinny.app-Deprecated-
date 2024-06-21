@@ -78,17 +78,17 @@ class _LoginPageState extends State<LoginPage> {
                 } :
                 (){},
                 title: "CONTINUAR",
-                color: (userType == 'responsável' || userType == 'aprendiz') ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6),
+                color: (userType == 'responsável' || userType == 'aprendiz') ? const Color(0xFF5D61D6) : const Color(0xFFD9D9D9),
             ),
             const SizedBox(height: 32),
             RichText(
               text: TextSpan(
                 text: 'Ainda não é cadastrado? ',
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   color: Color(0xFF060C20),
-                  fontFamily: "Fieldwork-Geo",
-                  fontWeight: FontWeight.w400,
+                  fontFamily: "Spartan",
+                  fontWeight: FontWeight.w500,
                 ),
                 children: [
                   TextSpan(
@@ -98,8 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushNamed(context, '/signUp');
                       },
                     style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF646AE3),
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF5D61D6),
                     
                     ),
                   ),

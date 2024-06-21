@@ -133,7 +133,10 @@ class _LoginParentsPageState extends State<LoginParentsPage> {
                     'Esqueci minha senha',
                     textAlign: TextAlign.right,
                     style: TextStyle(
-                      decoration: TextDecoration.underline
+                      decoration: TextDecoration.underline,
+                      fontFamily: "Spartan",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 10
                     ),
                   ),
                   const SizedBox(height: 64),
