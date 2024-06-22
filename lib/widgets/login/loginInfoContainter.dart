@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 
 class LoginInfoContainer extends StatelessWidget {
   final String title;
-  final String boldTitle;
   final String description;
-  final bool bold1;
+  final bool white;
 
   const LoginInfoContainer({
     required this.title,
-    required this.boldTitle,
     required this.description,
-    this.bold1 = false,
+    this.white = false,
     super.key,
   });
 
@@ -24,18 +22,10 @@ class LoginInfoContainer extends StatelessWidget {
             text: title,
             style: TextStyle(
               fontSize: 32,
-              color: bold1 ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
-              fontFamily: "Fieldwork-Geo",
-              fontWeight: bold1 ? FontWeight.w900: FontWeight.w600,
+              color: white ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
+              fontFamily: "Spartan",
+              fontWeight: FontWeight.w700,
             ),
-            children: [
-              TextSpan(
-                text: boldTitle,
-                style: TextStyle(
-                  fontWeight: bold1 ? FontWeight.w600 : FontWeight.w900,
-                ),
-              ),      
-            ],
           ),
         ),
         const SizedBox(height: 24.0,),
@@ -44,9 +34,9 @@ class LoginInfoContainer extends StatelessWidget {
           textAlign: TextAlign.left,
           style: TextStyle(
             fontSize: 16,
-            color: bold1 ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
-            fontFamily: "Fieldwork-Geo",
-            fontWeight: FontWeight.w400,
+            color: white ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
+            fontFamily: "Spartan",
+            fontWeight: FontWeight.w500,
           )
         ),
       ],
