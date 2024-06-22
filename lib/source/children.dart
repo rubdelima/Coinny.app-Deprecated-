@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn/pages/children/activities_v1.dart';
 import 'package:learn/widgets/global/nav_bar.dart';
 import 'package:learn/pages/children/home.dart';
 import 'package:learn/pages/children/activities.dart';
@@ -47,12 +48,14 @@ class _ChildrenMainState extends State<ChildrenMain> {
     List<Widget> _pageOptions = [
       ChildrenHomePage(pagePosition: pagePosition),
       ChildrenActivitiesPage(pagePosition: pagePosition),
+      Activities_V1(),
       MascotPage(pageController: _pageController),
     ];
 
     List<Map<String, dynamic>> navItems = [
       {'icon': Icons.home, 'name': 'Home'},
       {'icon': Icons.gamepad, 'name': 'Atividades'},
+      {'icon': Icons.abc_rounded, 'name': 'Atividades'},
       {'icon': Icons.network_ping_outlined, 'name': 'Mascote'},
     ];
 
@@ -71,7 +74,7 @@ class _ChildrenMainState extends State<ChildrenMain> {
               },
               children: _pageOptions,
             ),
-            if (_selectedIndex != 2)
+            if (_selectedIndex != 3)
               Positioned(
                   left: 32,
                   right: 32,

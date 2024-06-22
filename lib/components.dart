@@ -12,3 +12,5 @@ export 'package:learn/components/title_page.dart';
 export 'package:learn/widgets/login/BoxSelectorLogin.dart';
 export 'package:learn/components/login_title.dart';
 export 'package:learn/components/profile_selector.dart';
+export 'package:learn/components/animated_wrap.dart';
+export 'package:learn/components/activitie_block.dart';
