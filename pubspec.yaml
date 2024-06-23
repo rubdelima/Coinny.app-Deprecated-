@@ -103,6 +103,7 @@ flutter:
   - ./assets/images/appIcons/settings.png
   - ./assets/images/appIcons/bell.png
   - ./assets/images/appIcons/heart.png
+  - ./assets/images/appIcons/left-arrow.png
 
   # Badges
   - ./assets/images/appIcons/badge-bronze-default.png
@@ -113,7 +114,11 @@ flutter:
   - ./assets/images/appIcons/badge-ouro-blue.png
   - ./assets/images/appIcons/badge-diamante-default.png
   - ./assets/images/appIcons/badge-diamante-blue.png
-  - ./assets/images/appIcons/silver-badge.png 
+  - ./assets/images/appIcons/silver-badge.png
+  - ./assets/images/levels/badge-bronze.png
+  - ./assets/images/levels/badge-prata.png
+  - ./assets/images/levels/badge-ouro.png
+  - ./assets/images/levels/badge-diamante.png
   
   # Person Images
   - ./assets/images/appImages/ianzinho.jpg

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:learn/components/profile_name.dart';
 import 'package:learn/widgets.dart';
-import 'package:learn/classes.dart';
 import 'package:learn/components.dart';
 import 'package:provider/provider.dart';
 import 'package:learn/utils.dart';
 
+import 'package:learn/pages/parents/dependents.dart';
 class NewProfilePage extends StatelessWidget {
   NewProfilePage();
 
@@ -33,7 +32,13 @@ class NewProfilePage extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              ProfileOption(iconPath: "heart", title: "Dependentes"),
+              ProfileOption(iconPath: "heart", title: "Dependentes", onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DependentsPage(parent)));
+                    }),
               ProfileOption(iconPath: "settings", title: "Configurações"),
               ProfileOption(
                   iconPath: "bell", title: "Notificações", lenNotifications: 3),

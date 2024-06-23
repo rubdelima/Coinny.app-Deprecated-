@@ -7,6 +7,7 @@ export 'package:learn/widgets/global/nav_bar.dart';
 export "package:learn/widgets/profile/child_overview.dart";
 export "package:learn/widgets/profile/pulsing_photo.dart";
 export "package:learn/widgets/profile/sign_pro_plan_button.dart";
+export "package:learn/widgets/profile/child_card.dart";
 
 // Settings
 export 'package:learn/widgets/settings/selectedGoals.dart';
