@@ -6,12 +6,16 @@ import 'package:learn/classes/children.dart';
 class Parents extends Person {
   final String email;
   final Map<String, Children> dependents;
+  final bool isPremium;
+  final String location;
 
   Parents({
     required String name,
     required String photoPath,
     required this.email,
     this.dependents = const {},
+    this.isPremium = false,
+    this.location = "Recife - PE",
   }) : super(name: name, photoPath: photoPath);
 
   Map<String, dynamic> getJson() {

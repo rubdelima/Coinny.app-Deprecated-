@@ -5,6 +5,7 @@ import '../pages/children/activitiesPage.dart';
 import '../pages/children/MascotPage.dart';
 import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
+import 'package:learn/pages/parents/new_profile.dart';
 
 class ChildrenMain extends StatefulWidget {
   @override

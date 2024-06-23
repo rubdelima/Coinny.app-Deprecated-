@@ -5,6 +5,7 @@ import '../pages/parents/profilePage.dart';
 import '../pages/parents/monitoringPage.dart';
 import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
+import 'package:learn/pages/parents/new_profile.dart';
 
 class ParentsMain extends StatefulWidget {
   @override
@@ -53,12 +54,14 @@ class _ParentsMainState extends State<ParentsMain> {
     List<Widget> _pageOptions = [
       ParentsHome(pagePosition: pagePosition,),
       MonitoringPage(pagePosition: pagePosition),
-      ProfilePage(pagePosition: pagePosition,pageController: _pageController,)
+      ProfilePage(pagePosition: pagePosition,pageController: _pageController,),
+      NewProfilePage()
     ];
 
     List<Map<String, dynamic>> navItems = [
       {'icon': Icons.home, 'name': 'Home'},
       {'icon': Icons.monitor, 'name': 'Monitorar'},
+      {'icon': Icons.person, 'name': 'Perfil'},
       {'icon': Icons.person, 'name': 'Perfil'},
     ];
 
