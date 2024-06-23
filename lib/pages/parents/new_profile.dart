@@ -3,8 +3,8 @@ import 'package:learn/components/profile_name.dart';
 import 'package:learn/widgets.dart';
 import 'package:learn/classes.dart';
 import 'package:learn/components.dart';
-import 'package:learn/pages/parents/edit_dependent.dart';
 import 'package:provider/provider.dart';
+import 'package:learn/utils.dart';
 
 class NewProfilePage extends StatelessWidget {
   NewProfilePage();
@@ -38,14 +38,13 @@ class NewProfilePage extends StatelessWidget {
               ProfileOption(
                   iconPath: "bell", title: "Notificações", lenNotifications: 3),
               ProfileOption(
-                  iconPath: "log-out", title: "Sair", lenNotifications: -1
-                  /*
-              onTap: (){
-                clearLocalPerson();
-                 Navigator.pushReplacementNamed(context, '/login');
-              }
-              */
-                  )
+                  iconPath: "log-out",
+                  title: "Sair",
+                  lenNotifications: -1,
+                  onTap: () {
+                    clearLocalPerson();
+                    Navigator.pushReplacementNamed(context, '/login');
+                  })
             ],
           ),
         ));

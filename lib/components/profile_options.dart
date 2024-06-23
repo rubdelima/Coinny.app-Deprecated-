@@ -4,7 +4,7 @@ class ProfileOption extends StatelessWidget {
   String iconPath;
   String title;
   int lenNotifications;
-  VoidCallbackAction? onTap;
+  void Function()? onTap;
 
   Widget finalArrow() {
     if (lenNotifications == 0) {
@@ -41,7 +41,7 @@ class ProfileOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () => onTap,
+        onTap: onTap,
         child: Container(
           margin: const EdgeInsets.only(top: 8, bottom: 8),
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
