@@ -5,6 +5,7 @@ import 'package:learn/components/newBack_button.dart';
 import 'package:learn/pages/children/codeRequestPage.dart';
 import 'package:learn/pages/loginPage.dart';
 import 'package:learn/pages/parents/signUpParents.dart';
+import 'package:learn/utils/fontstyles.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
 
 class SignUp extends StatelessWidget {
@@ -22,7 +23,7 @@ class SignUp extends StatelessWidget {
           Align(
               alignment: Alignment.topLeft,
               child: CoinnyBackButton(
-                  defaultIcon: false,
+                  color: const Color(0xFFFFFFFF),
                   onPressed: () {
                     Navigator.pushReplacement(
                         context,
@@ -54,21 +55,15 @@ class SignUp extends StatelessWidget {
                   ),
                   child: Center(
                     child: RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         text: 'Se o seu objetivo é ',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: FontStyles.body2MediumWhite,
                         children: <TextSpan>[
                           TextSpan(
                             text: 'aprender sobre\neducação financeira',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                            ),
+                            style: FontStyles.body2BoldWhite
                           ),
-                          TextSpan(
+                          const TextSpan(
                             text: ', solicite um código de acesso ao seu responsável.',
                           ),
                         ],
@@ -93,7 +88,7 @@ class SignUp extends StatelessWidget {
                       ),
                     );
                   },
-                  title: "Continuar",
+                  title: "CONTINUAR",
                   color: const Color(0xFFFFFFFF),
                   fontColor: const Color(0xFF1B1C43),
                 ),
@@ -107,7 +102,7 @@ class SignUp extends StatelessWidget {
                       ),
                     );
                   },
-                  title: "Solicitar código",
+                  title: "SOLICITAR CÓDIGO",
                   color: Colors.transparent,
                   borderColor: const Color(0xFFFFFFFF),
                 )

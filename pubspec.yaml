@@ -97,6 +97,10 @@ flutter:
   - ./assets/images/appIcons/password_eye_off.png
   - ./assets/images/appIcons/date_calendar.png
   - ./assets/images/appIcons/right_arrow.png
+  - ./assets/images/appIcons/marked_checkbox.png
+  - ./assets/images/appIcons/unmarked_checkbox.png
+  - ./assets/images/appIcons/popup_slider.png
+  - ./assets/images/appIcons/top.png
 
   # Badges
   - ./assets/images/appIcons/badge-bronze-default.png

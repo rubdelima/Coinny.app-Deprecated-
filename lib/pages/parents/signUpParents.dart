@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -8,6 +9,7 @@ import 'package:learn/components/gradient_button.dart';
 import 'package:learn/components/newBack_button.dart';
 import 'package:learn/pages/loginPage.dart';
 import 'package:learn/pages/parents/loginParenstPage.dart';
+import 'package:learn/pages/signUp.dart';
 import 'package:learn/widgets/login/loginAppBar.dart';
 import 'package:learn/widgets/login/loginInfoContainter.dart';
 
@@ -35,13 +37,13 @@ class LoginInputFields extends StatelessWidget {
             child: TextField(
               controller: nameController,
               style: const TextStyle(
-                  fontFamily: "Fieldwork-Geo",
+                  fontFamily: "Spartan",
                   fontWeight: FontWeight.w400,
                   color: Color(0xffffffff),
                   fontSize: 14),
               decoration: InputDecoration(
                 labelStyle: const TextStyle(
-                    fontFamily: "Fieldwork-Geo",
+                    fontFamily: "Spartan",
                     fontWeight: FontWeight.w400,
                     color: Color(0xffCDCDCD),
                     fontSize: 14),
@@ -57,13 +59,13 @@ class LoginInputFields extends StatelessWidget {
             child: TextField(
               controller: emailController,
               style: const TextStyle(
-                  fontFamily: "Fieldwork-Geo",
+                  fontFamily: "Spartan",
                   fontWeight: FontWeight.w400,
                   color: Color(0xffffffff),
                   fontSize: 14),
               decoration: InputDecoration(
                 labelStyle: const TextStyle(
-                    fontFamily: "Fieldwork-Geo",
+                    fontFamily: "Spartan",
                     fontWeight: FontWeight.w400,
                     color: Color(0xffCDCDCD),
                     fontSize: 14),
@@ -110,13 +112,13 @@ class _SignUpStatefulFieldsState extends State<SignUpStatefulFields> {
           child: TextField(
             controller: widget.passwordController,
             style: const TextStyle(
-                fontFamily: "Fieldwork-Geo",
+                fontFamily: "Spartan",
                 fontWeight: FontWeight.w400,
                 color: Color(0xffffffff),
                 fontSize: 14),
             decoration: InputDecoration(
               labelStyle: const TextStyle(
-                  fontFamily: "Fieldwork-Geo",
+                  fontFamily: "Spartan",
                   fontWeight: FontWeight.w400,
                   color: Color(0xffCDCDCD),
                   fontSize: 14),
@@ -150,13 +152,13 @@ class _SignUpStatefulFieldsState extends State<SignUpStatefulFields> {
           child: TextField(
             controller: widget.dateController,
             style: const TextStyle(
-                fontFamily: "Fieldwork-Geo",
+                fontFamily: "Spartan",
                 fontWeight: FontWeight.w400,
                 color: Color(0xffffffff),
                 fontSize: 14),
             decoration: InputDecoration(
               labelStyle: const TextStyle(
-                  fontFamily: "Fieldwork-Geo",
+                  fontFamily: "Spartan",
                   fontWeight: FontWeight.w400,
                   color: Color(0xffCDCDCD),
                   fontSize: 14),
@@ -259,60 +261,108 @@ class _SignParentsPageState extends State<SignParentsPage> {
     super.dispose();
   }
 
+  bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1B1C43),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: CoinnyBackButton(
-                  defaultIcon: false,
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoginPage()));
-                  }),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.04,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: <Widget>[
-                  const LoginInfoContainer(
-                      title: "Cadastre-se\nna Coinny!",
-                      white: true,
-                      description:
-                          "Insira suas credenciais abaixo para finalizar o seu cadastro."),
-                  const SizedBox(height: 48),
-                  LoginInputFields(
-                    emailController: _emailController,
-                    passwordController: _passwordController,
-                    nameController: _nameController,
-                    dateController: _dateController,
-                  ),
-                  const SizedBox(height: 32),
-                  CoinnyGradientButton(
-                    onPressed: () {
-                      signUpWithFirebase();
-                    },
-                    title: "CADASTRAR",
-                    color: const Color(0xFFFFFFFF),
-                    fontColor: const Color(0xFF1B1C43),
-                  ),
-                  // Add a button for signing up, calling signUpWithFirebase
-                ],
+      body: SingleChildScrollView(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.07,
               ),
-            ),
-          ]),
+              Align(
+                alignment: Alignment.topLeft,
+                child: CoinnyBackButton(
+                    color: const Color(0xFFFFFFFF),
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => const SignUp()));
+                    }),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: <Widget>[
+                    const LoginInfoContainer(
+                        title: "Cadastre-se\nna Coinny!",
+                        white: true,
+                        description:
+                            "Insira suas credenciais abaixo para finalizar o seu cadastro."),
+                    const SizedBox(height: 48),
+                    LoginInputFields(
+                      emailController: _emailController,
+                      passwordController: _passwordController,
+                      nameController: _nameController,
+                      dateController: _dateController,
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isChecked = !isChecked;
+                              });
+                            },
+                            icon: Image.asset(
+                              isChecked
+                                  ? 'assets/images/appIcons/marked_checkbox.png'
+                                  : 'assets/images/appIcons/unmarked_checkbox.png',
+                              color: const Color(0xFFFFFFFF),
+                            )),
+                        Flexible(
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  'Ao finalizar o seu cadastro, você está de acordo com os ',
+                              style: const TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontFamily: 'Spartan',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'termos e regras de serviço da Coinny.',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  // Você pode adicionar um GestureDetector para tornar o texto clicável
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // Ação ao clicar nos termos e regras
+                                    },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 44),
+                    CoinnyGradientButton(
+                      onPressed: () {
+                        signUpWithFirebase();
+                      },
+                      title: "CONTINUAR",
+                      color: isChecked
+                          ? const Color(0xFFFFFFFF)
+                          : const Color(0xFFFFFFFF).withOpacity(0.2),
+                      fontColor: const Color(0xFF1B1C43),
+                    ),
+                    // Add a button for signing up, calling signUpWithFirebase
+                  ],
+                ),
+              ),
+            ]),
+      ),
     );
   }
 }
