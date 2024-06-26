@@ -25,7 +25,7 @@ class CustomRadioTile extends StatelessWidget {
               isSelected ? const Color.fromARGB(255, 255, 255, 255) : Colors.white, // Highlight color
           borderRadius: BorderRadius.circular(25),
           border: Border.all(
-            color: isSelected ? const Color(0xFF5B61D7) : const Color(0xFFB6B6B6), // Highlight color
+            color: isSelected ? const Color(0xFF5B61D7) : const Color(0xFFD9D9D9), // Highlight color
             width: 0.75,
           ),
           boxShadow: [
@@ -44,7 +44,7 @@ class CustomRadioTile extends StatelessWidget {
               (title == 'Sou um\nresponsável') ? 'assets/gifs/login_glasses.gif' : 'assets/gifs/login_pig.gif', 
               height: 84, 
               width: 84, 
-              color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
+              color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFF3D3D3D).withOpacity(0.55)
             ),  
             const Spacer(),
             Expanded(
@@ -65,7 +65,7 @@ class CustomRadioTile extends StatelessWidget {
                     fontSize: 14,
                     fontFamily: "Spartan",
                     fontWeight: FontWeight.w500,
-                    color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFFB6B6B6)
+                    color: isSelected ? const Color(0xFF5D61D6) : const Color(0xFF3D3D3D).withOpacity(0.45)
                   )
                 )
               )
