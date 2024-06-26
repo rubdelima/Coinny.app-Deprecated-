@@ -229,8 +229,9 @@ class _SignParentsPageState extends State<SignParentsPage> {
         String defaultName = _nameController.text.isEmpty
             ? "Default Name"
             : _nameController.text;
+        String birthDate = _dateController.text;
         String defaultPhotoPath =
-            "assets/images/appImages/joana-dias.png"; // imagem padrao
+            "assets/images/appImages/woman.png"; // imagem padrao
 
         await FirebaseFirestore.instance
             .collection('parent')
@@ -238,6 +239,7 @@ class _SignParentsPageState extends State<SignParentsPage> {
             .set({
           'name': defaultName,
           'photoPath': defaultPhotoPath,
+          'dateOfBirth': birthDate,
           'dependents': ["1111"]
         });
 
