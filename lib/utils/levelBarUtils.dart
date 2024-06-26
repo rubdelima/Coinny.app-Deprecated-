@@ -16,6 +16,16 @@ const Map<int, Map<String, dynamic>> levelsPontuations = {
   16000 : {'level' : 'Diamante', 'class' : 'III', 'nextLevelValue' : 16001, 'levelValue': 16000}
 };
 
+Map<String, dynamic> getLevel(int pontuation){
+  Map<String, dynamic> level = {};
+  levelsPontuations.keys.forEach((e){
+    if(pontuation >= e && pontuation < levelsPontuations[e]!["nextLevelValue"]){
+      level = levelsPontuations[e]!;
+    }
+  });
+  return level;
+}
+
 const  Map<String, List<Color>> boxesCollors = {
   'Bronze' : [Color(0xFF75250C), Color(0xFFE3834F),  ],
   'Prata'  : [Color(0xFF4C4C4C), Color(0xFFB0B0B0), ],
@@ -29,3 +39,4 @@ const Map<String, Color> levelColors = {
   'Ouro'  :  Color(0xFFFFFFFF),
   "Diamante" :  Color(0xFFFFFFFF)
 };
+
