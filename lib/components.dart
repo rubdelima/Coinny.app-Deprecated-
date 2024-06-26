@@ -8,3 +8,4 @@ export "package:learn/components/profile_options.dart";
 export 'package:learn/components/profile_name.dart';
 export 'package:learn/components/new_class_badge.dart';
 export 'package:learn/components/new_back_button.dart';
+export 'package:learn/components/photo_profile.dart';

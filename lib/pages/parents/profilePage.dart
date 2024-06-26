@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                             boxShadow: [
                               BoxShadow(
-                                color: Color(0xFF5C5C5C).withOpacity(0.2),
+                                color: const Color(0xFF5C5C5C).withOpacity(0.2),
                                 blurRadius: 10,
                                 spreadRadius: 0.5,
                                 offset: const Offset(-1, 5),
