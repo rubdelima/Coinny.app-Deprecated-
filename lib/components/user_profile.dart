@@ -30,10 +30,10 @@ class UserPhotoAndName extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: "${isSugestion ? person.name : "Olá"}\n",
+                text: isSugestion ? person.name : "Bom dia, ",
                 style: TextStyle(
                   fontSize: isSugestion ? 18 : 14,
-                  fontWeight: isSugestion ? FontWeight.bold : FontWeight.normal,
+                  fontWeight: isSugestion ? FontWeight.bold : FontWeight.w500,
                 ),
               ),
               TextSpan(
@@ -41,14 +41,14 @@ class UserPhotoAndName extends StatelessWidget {
                     ? "${child!.getLevel()} ${child.getClass()}"
                     : person.name,
                 style: TextStyle(
-                  fontSize: isSugestion ? 14 : 18,
-                  fontWeight: isSugestion ? FontWeight.normal : FontWeight.bold,
+                  fontSize: 14,
+                  fontWeight: isSugestion ? FontWeight.normal : FontWeight.w700,
                 ),
               ),
             ],
             style: TextStyle(
-              color: isSugestion ? const Color(0xFF0D116E) : Colors.white,
-              fontFamily: "Fieldwork-Geo",
+              color: isSugestion ? const Color(0xFF0D116E) : const Color(0xFF060C20),
+              fontFamily: "Spartan",
             ),
           ),
         ),

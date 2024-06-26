@@ -42,6 +42,8 @@ dependencies:
   shared_preferences: ^2.0.8
   flutter_secure_storage: ^9.0.0
   google_fonts: ^6.2.0
+  fluttertoast: ^8.0.8
+  overlay_support: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -109,6 +111,10 @@ flutter:
   - ./assets/images/appIcons/unmarked_checkbox.png
   - ./assets/images/appIcons/popup_slider.png
   - ./assets/images/appIcons/top.png
+  - ./assets/images/appIcons/alert_circle.png
+  - ./assets/images/appIcons/medal.png
+  - ./assets/images/appIcons/money.png
+  - ./assets/images/appIcons/ray.png
 
   # Badges
   - ./assets/images/appIcons/badge-bronze-default.png
@@ -132,7 +138,8 @@ flutter:
   - ./assets/images/appImages/activitiesBar.png
   - ./assets/images/appImages/AppIconBalloon.png
   - ./assets/images/appImages/carlos-dias.png
-
+  - ./assets/images/appImages/woman.png
+  
   # Mascot Images
   - ./assets/images/mascote/background.png
   - ./assets/images/mascote/backgroundLarge.png

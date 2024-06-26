@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learn/backend/firebase_options.dart';
 import 'package:learn/pages/signUp.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'pages/loginPage.dart';
 import 'pages/parents/signUpParents.dart';
 import 'source/parents.dart';
@@ -24,22 +25,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MaterialApp(
-      title: 'Coinny',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return OverlaySupport(
+      child: MaterialApp(
+        title: 'Coinny',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const Authenticator(),
+        routes: {
+          // rotas da aplicação
+          '/signUp': (context) => const SignUp(),
+          '/login': (context) => LoginPage(),
+          '/parentsMain': (context) => ParentsMain(),
+          '/childrenMain': (context) => ChildrenMain(),
+          '/signUpParents': (context) => SignParentsPage(),
+          '/lession01': (context) => Lession01Main()
+        },
       ),
-      home: const Authenticator(),
-      routes: {
-        // rotas da aplicação
-        '/signUp': (context) => const SignUp(),
-        '/login': (context) => LoginPage(),
-        '/parentsMain': (context) => ParentsMain(),
-        '/childrenMain': (context) => ChildrenMain(),
-        '/signUpParents': (context) => SignParentsPage(),
-        '/lession01': (context) => Lession01Main()
-      },
     );
   }
 }
