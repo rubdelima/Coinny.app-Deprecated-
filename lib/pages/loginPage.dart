@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: const LoginInfoContainer(
-                title: "Bem-vindo\nà Coinny",
+                title: "Bem-vindo\nà Coinny!",
                 description:
                     "Para inicar sua sessão, selecione o seu tipo de perfil na Coinny!"),
             ),

@@ -169,6 +169,20 @@ class FontStyles {
     color: Color(0xFFFFFFFF),
   );
 
+  static TextStyle body2BoldBlack = const TextStyle(
+    fontSize: 14,
+    fontFamily: 'Spartan',
+    fontWeight: FontWeight.w700,
+    color: Color(0xFF060C20),
+  );
+
+  static TextStyle body2BoldWhite = const TextStyle(
+    fontSize: 14,
+    fontFamily: 'Spartan',
+    fontWeight: FontWeight.w700,
+    color: Color(0xFFFFFFFF),
+  );
+
   static TextStyle body3SemiBoldBlack = const TextStyle(
     fontSize: 12,
     fontFamily: 'Spartan',
