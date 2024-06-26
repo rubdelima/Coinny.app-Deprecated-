@@ -6,6 +6,7 @@ import '../pages/children/MascotPage.dart';
 import 'package:learn/classes.dart';
 import 'package:provider/provider.dart';
 import 'package:learn/pages/parents/new_profile.dart';
+import "package:learn/pages/children/newActivitiePage.dart";
 
 class ChildrenMain extends StatefulWidget {
   @override
@@ -47,7 +48,7 @@ class _ChildrenMainState extends State<ChildrenMain> {
   Widget build(BuildContext context) {
     List<Widget> _pageOptions = [
       ChildrenHomePage(pagePosition: pagePosition),
-      ChildrenActivitiesPage(pagePosition: pagePosition),
+      Activities_V1(),
       MascotPage(pageController: _pageController),
     ];
 

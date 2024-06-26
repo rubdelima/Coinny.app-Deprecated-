@@ -75,7 +75,7 @@ class _PhotoProfileState extends State<PhotoProfile> {
                     onPressed: () {
                       widget.photoPathController.text = selectedPhoto;
                       widget.onPhotoChanged();
-                      Navigator.pop(context); // Close the bottom sheet
+                      Navigator.pop(context);
                     },
                     title: "SALVAR",
                     color: selectedPhoto.isEmpty ? const Color(0xFF848484) : const Color(0xff5D61D6),

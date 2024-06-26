@@ -3,7 +3,13 @@ import 'package:learn/utils.dart';
 
 class NewClassBadge extends StatelessWidget {
   final Children children;
-  const NewClassBadge({required this.children, super.key});
+  final double height;
+  final double width;
+  const NewClassBadge({
+    required this.children, 
+    this.height = 88,
+    this.width = 110,
+    super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +21,8 @@ class NewClassBadge extends StatelessWidget {
           height: 88,
         ),
         Container(
-            height: 88,
-            width: 110,
+            height: height,
+            width: width,
             padding: const EdgeInsets.all(16),
             child: Text(level, style: CoinnyTextStyles.body_2_medium()))
       ],

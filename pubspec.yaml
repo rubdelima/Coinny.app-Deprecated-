@@ -42,6 +42,7 @@ dependencies:
   shared_preferences: ^2.0.8
   flutter_secure_storage: ^9.0.0
   google_fonts: ^6.2.0
+  percent_indicator: ^4.2.2 
 
 dev_dependencies:
   flutter_test:
@@ -105,6 +106,7 @@ flutter:
   - ./assets/images/appIcons/heart.png
   - ./assets/images/appIcons/left-arrow.png
   - ./assets/images/appIcons/camera.png
+  - ./assets/images/appIcons/ranking.png
 
   # Badges
   - ./assets/images/appIcons/badge-bronze-default.png
@@ -120,6 +122,10 @@ flutter:
   - ./assets/images/levels/badge-prata.png
   - ./assets/images/levels/badge-ouro.png
   - ./assets/images/levels/badge-diamante.png
+  - ./assets/images/levels/bronze.png
+  - ./assets/images/levels/prata.png
+  - ./assets/images/levels/ouro.png
+  - ./assets/images/levels/diamante.png
   
   # Person Images
   - ./assets/images/appImages/ianzinho.jpg
@@ -188,6 +194,14 @@ flutter:
   - ./assets/images/profiles/game.png
   - ./assets/images/profiles/robot.png
   - ./assets/images/profiles/unicorn.png
+
+  # Axctivities Images
+  - ./assets/images/activities/como.png
+  - ./assets/images/activities/metas.png
+  - ./assets/images/activities/nece.png
+  - ./assets/images/activities/planejar.png
+  - ./assets/images/activities/poup.png
+  - ./assets/images/activities/visao.png
 
   fonts:
     - family: Fieldwork-Geo

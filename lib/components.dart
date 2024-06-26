@@ -9,3 +9,5 @@ export 'package:learn/components/profile_name.dart';
 export 'package:learn/components/new_class_badge.dart';
 export 'package:learn/components/new_back_button.dart';
 export 'package:learn/components/photo_profile.dart';
+export 'package:learn/components/animated_wrap.dart';
+export 'package:learn/components/activitie_block.dart';
