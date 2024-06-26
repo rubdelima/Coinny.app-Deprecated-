@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn/utils/fontstyles.dart';
 
 class LoginInfoContainer extends StatelessWidget {
   final String title;
@@ -20,24 +21,14 @@ class LoginInfoContainer extends StatelessWidget {
         RichText(
           text: TextSpan(
             text: title,
-            style: TextStyle(
-              fontSize: 32,
-              color: white ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
-              fontFamily: "Spartan",
-              fontWeight: FontWeight.w700,
-            ),
+            style: white? FontStyles.h2SemiBoldWhite : FontStyles.h1BoldBlack,
           ),
         ),
         const SizedBox(height: 24.0,),
         Text(
           description,
           textAlign: TextAlign.left,
-          style: TextStyle(
-            fontSize: 16,
-            color: white ? const Color(0xFFFFFFFF): const Color(0xFF060C20),
-            fontFamily: "Spartan",
-            fontWeight: FontWeight.w500,
-          )
+          style: white? FontStyles.body1MediumWhite : FontStyles.body1MediumBlack
         ),
       ],
     );
