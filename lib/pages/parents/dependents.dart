@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn/widgets.dart';
 import 'package:learn/components.dart';
 import 'package:learn/utils.dart';
+import 'package:learn/pages/parents/new_edit_dependent.dart';
 
 class DependentsPage extends StatelessWidget {
   final VolatileParents parent;
@@ -50,16 +51,17 @@ class DependentsPage extends StatelessWidget {
               Column(children: dependentsCards),
               const SizedBox(height: 32),
               CoinnyGradientButton(
-                onPressed: (){},
                 title: "ADICIONAR DEPENDENTES",
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              AddDependentPage(parent: parent)));
+                },
               )
             ],
           ),
         ));
   }
 }
-
-
-
-
-

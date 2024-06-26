@@ -104,6 +104,7 @@ flutter:
   - ./assets/images/appIcons/bell.png
   - ./assets/images/appIcons/heart.png
   - ./assets/images/appIcons/left-arrow.png
+  - ./assets/images/appIcons/camera.png
 
   # Badges
   - ./assets/images/appIcons/badge-bronze-default.png
@@ -127,6 +128,7 @@ flutter:
   - ./assets/images/appImages/activitiesBar.png
   - ./assets/images/appImages/AppIconBalloon.png
   - ./assets/images/appImages/carlos-dias.png
+
   # Mascot Images
   - ./assets/images/mascote/background.png
   - ./assets/images/mascote/backgroundLarge.png
@@ -178,6 +180,14 @@ flutter:
   - ./assets/gifs/login_pig.gif
   - ./assets/gifs/confetti.gif
 
+  # Profiles
+  - ./assets/images/profiles/ball.png
+  - ./assets/images/profiles/bear.png
+  - ./assets/images/profiles/cube.png
+  - ./assets/images/profiles/default.png
+  - ./assets/images/profiles/game.png
+  - ./assets/images/profiles/robot.png
+  - ./assets/images/profiles/unicorn.png
 
   fonts:
     - family: Fieldwork-Geo
